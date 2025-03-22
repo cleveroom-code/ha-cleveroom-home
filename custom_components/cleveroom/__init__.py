@@ -235,8 +235,8 @@ def on_device_change_wrapper(hass: HomeAssistant, entry: ConfigEntry):
             if is_event(device) and has_method(entity, 'trigger_event'):
                 asyncio.run_coroutine_threadsafe(entity.trigger_event(), hass.loop)
 
-            if not is_new and has_method(entity, 'init_or_update_entity_state'):
-                entity.init_or_update_entity_state(device)
+            if not is_new:
+                # entity.init_or_update_entity_state(device)
                 asyncio.run_coroutine_threadsafe(entity.async_update(), hass.loop)
 
             # if is_event(device):

@@ -157,9 +157,11 @@ class CleveroomLight(KLWEntity,LightEntity):
                 self._hs_color = (hsb[0], hsb[1])
         else:
             if "gear" in detail:
+                # print(f'{self._full_name} 亮度 from {self._brightness} => {detail.get("gear")}')
                 self._brightness = detail.get("gear")
             if "warm" in detail:
-                self._color_temp = detail["warm"]
+                # print(f'{self._full_name} 色温 from {self._color_temp} ==> {detail.get("warm")}')
+                self._color_temp = 100 - detail.get("warm")
 
 
     @property
@@ -202,8 +204,6 @@ class CleveroomLight(KLWEntity,LightEntity):
     def color_mode(self):
         """Return the color mode of the light."""
         return self._attr_color_mode
-
-
 
     async def async_turn_on(self, **kwargs):
         _LOGGER.debug(f"Turn on: {self._oid}, params: {kwargs}")

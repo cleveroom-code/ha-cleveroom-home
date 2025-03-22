@@ -148,19 +148,19 @@ class KLWIOTClient(KLWEventEmitter):
         # self.on_device_create_or_update(device, buff_type)
 
     def on_add_device(self, device: CRMDevice, buff_type):
-        # self.log(f"Added:{device}, Type:{buff_type}")
+        self.log(f"Added:{device}, Type:{buff_type}")
         if buff_type == BufferType.RGBBUFFER:
             # asyncio.run(self.delayed_device_create_or_update(device, buff_type))
-            pass
+            self.on_device_create_or_update(device, buff_type)
         else:
             self.on_device_create_or_update(device, buff_type)
 
     def on_change_device(self, device: CRMDevice, buff_type):
-        # self.log(f"Updated:{device}, Type:{buff_type}")
+        self.log(f"Updated:{device}, Type:{buff_type}")
         # Determine if it is RGBBUFFER type data, it should be processed with a delay of 200ms
         if buff_type == BufferType.RGBBUFFER:
             # asyncio.run(self.delayed_device_create_or_update(device, buff_type))
-            pass
+            self.on_device_create_or_update(device, buff_type)
         else:
             self.on_device_create_or_update(device, buff_type)
 
