@@ -56,11 +56,11 @@ SYSTEM_LEVEL_OPTIONS = {
 DEFAULT_PORT = 4196
 DEFAULT_SCAN_INTERVAL = 30
 
-# leveroom has implemented most platforms, but the "remote" platform is poorly supported,
+# leveroom has implemented most platforms, but the "remote" platform is poorly supported.Therefore, we use 'event' instead of 'remote'.
 # so integration is paused.
 PLATFORMS = ["light", "sensor", "climate", "cover", "switch", "binary_sensor", "fan"
-    , "button", "alarm_control_panel","scene", "media_player"]
-# PLATFORMS = ["light","button"]
+    , "button", "alarm_control_panel","scene", "media_player","event"]
+# PLATFORMS = ["event","button"]
 ENTITY_REGISTRY = {}
 
 
@@ -231,9 +231,16 @@ def on_device_change_wrapper(hass: HomeAssistant, entry: ConfigEntry):
         oid = device.get("oid")
         entity = ENTITY_REGISTRY.get(entry.entry_id, {}).get(oid)
         if entity:
+            #trigger event
+            if is_event(device) and has_method(entity, 'trigger_event'):
+                asyncio.run_coroutine_threadsafe(entity.trigger_event(), hass.loop)
+
             if not is_new and has_method(entity, 'init_or_update_entity_state'):
                 entity.init_or_update_entity_state(device)
                 asyncio.run_coroutine_threadsafe(entity.async_update(), hass.loop)
+
+            # if is_event(device):
+            #     hass.bus.async_fire("cleveroom_scene_activated", {"oid": oid})
         else:
             pass
 
@@ -355,12 +362,15 @@ def is_heater(device):
     """Check if the device is a heater."""
     return device["detail"]["category"] == DeviceType.FLOOR_HEATING
 
+def is_event(device):
+    """Check if the device is an event."""
+    return device["detail"]["category"] == DeviceType.EVENT
 
-def generate_object_id(gateway_id: str, oid: str) -> str:
+def generate_object_id( oid: str,prefix:str = 'entity',) -> str:
     """
     Generate a unique object ID for the entity.
     """
     # object_id = f"entity_{oid.lower().replace("-", "_").replace(".", "_")}"
-    object_id = "entity_{}".format(oid.lower().replace("-", "_").replace(".", "_"))
+    object_id = "{}_{}".format(prefix,oid.lower().replace("-", "_").replace(".", "_"))
     object_id = re.sub(r'[^a-z0-9_]', '', object_id)
     return object_id

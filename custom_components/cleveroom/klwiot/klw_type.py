@@ -24,6 +24,7 @@ class BufferType:
     CURTAINBUFFER = 22
     MODULEBUFFER = 23
     PLCWRITEFEEDBACK = 24
+    EVENTBUFFER = 25
 
 
 class DeviceType:
@@ -70,3 +71,5 @@ class DeviceType:
     WATERMETER = 19
     # Gas meter
     GASMETER = 20
+    #Event
+    EVENT = 21

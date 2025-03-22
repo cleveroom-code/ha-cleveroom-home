@@ -69,7 +69,7 @@ class KLWIOTClient(KLWEventEmitter):
         self._language = language
         ###----buissness----###
         self.data_buffer = []  # data cache
-        self.allowed_d1 = {243, 112, 250, 35, 37, 38, 62, 87, 22}
+        self.allowed_d1 = {243, 112, 250, 35, 37, 38, 62, 87, 22,237}
         self.heartbeat_interval = 15  # headbeat interval
         # Initialize buffers
         self.__devbuffer = DeviceBuffer(BufferType.DEVICEBUFFER)
@@ -90,6 +90,8 @@ class KLWIOTClient(KLWEventEmitter):
         self.__f199buffer = DeviceBuffer(BufferType.CACHEBUFFER)
         self.__curtainbuffer = DeviceBuffer(BufferType.CURTAINBUFFER)
 
+        self.__triggerbuffer = DeviceBuffer(BufferType.EVENTBUFFER)
+
         # Initialize feedback callbacks
         self.__feedback_callbacks = {}
         # client the last data update timestamp
@@ -109,7 +111,8 @@ class KLWIOTClient(KLWEventEmitter):
             self.__volbuffer,
             self.__rgbbuffer,
             self.__cachebuffer,
-            self.__securitybuffer
+            self.__securitybuffer,
+            self.__triggerbuffer
         ]
         for bf in buffers:
             bf.add_listener("inner_buffer", {
@@ -715,6 +718,12 @@ class KLWIOTClient(KLWEventEmitter):
                         self.__sensorextendbuffer.add(ins, [0, 1, 2, 3, 5])
             elif cmd == 205:
                 self.__timebuffer.add(ins, [0, 1])
+            # elif cmd == 164:
+            #     self.__triggerbuffer.just_trigger_event_delay(ins,0.1)
+        elif D1 == 237:
+            #listen to scene actived
+            self.__triggerbuffer.just_trigger_event_delay(ins)
+
 
     def handle_disconnection(self):
         self.connected = False
@@ -798,6 +807,7 @@ class KLWIOTClient(KLWEventEmitter):
         self.__cachebuffer.clear()
         self.__f199buffer.clear()
         self.__curtainbuffer.clear()
+        self.__triggerbuffer.clear()
 
     def stop(self):
         """Stop the client"""

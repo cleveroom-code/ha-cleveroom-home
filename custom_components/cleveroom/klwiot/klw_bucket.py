@@ -379,6 +379,17 @@ class DeviceBucket:
                 'oriObj': ori_obj,
                 'changeObj': o
             }
+        elif buffer_type == BufferType.EVENTBUFFER:
+            o = {
+                "uid": uid,
+                "category": DeviceType.EVENT
+            }
+            self.init_event(o,inst)
+            return {
+                'oriObj': None,
+                'changeObj': o
+            }
+
         return None
 
     def init_device(self, device, inst):
@@ -599,6 +610,14 @@ class DeviceBucket:
             security['coverName'] = get_local_string("room_disarm", self._language)
         else:
             security['coverName'] = get_local_string("unknow_state", self._language)
+
+    def init_event(self, event, inst):
+        D1, D2, D3, D4, D5, D6, D7, D8 = inst
+        default_floor_name = get_default_floor_name(D2, self._language)
+        default_room_name = get_default_room_name(D3, self._language)
+        default_device_name = get_default_scene_name(D4, self._language)
+        event['name'] = f'Event:{default_floor_name}{default_room_name}{default_device_name}'
+
 
     def get_security_state(self, inst):
         D1, D2, D3, D4, D5, D6, D7, D8 = inst

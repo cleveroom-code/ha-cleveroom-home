@@ -16,7 +16,7 @@ class KLWEntity(Entity):
         self._oid = device["oid"]
         detail = device["detail"]
         self._full_name = f"{detail.get("fName", "")} {detail.get("rName", "")} {detail.get("dName", "")}".strip()
-        self._object_id = generate_object_id(gateway_id, self._oid)
+        self._object_id = generate_object_id( self._oid)
         self._name = self._full_name
 
         if auto_area == 1:

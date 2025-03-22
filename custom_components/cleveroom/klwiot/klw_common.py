@@ -1,7 +1,7 @@
 from copy import deepcopy
 from datetime import datetime, timezone
 from typing import Any
-
+import time
 
 class Instruction:
 
@@ -80,6 +80,7 @@ class DeviceBuffer:
         self.buffer_type = buf_type
         self.devices = {}
         self.listeners = {}
+        self.antishakes  = {}
 
     def create_index(self, ins, idx):
         b = ins.get_inst()
@@ -201,6 +202,17 @@ class DeviceBuffer:
         alarm = CRMDevice(uid, ins)
         self._trigger_event('add', alarm)
 
+    def just_trigger_event_delay(self, ins, delay=0.25):
+        uid = self.create_index(ins, [0, 1, 2, 3, 4, 5, 6])
+        now = time.time()
+        lasttime = self.antishakes.get(uid)
+        # freeze in 250ms
+        if lasttime and (now - lasttime)<delay:
+            return
+        # update last time
+        self.antishakes[uid] = now
+        event = CRMDevice(uid, ins)
+        self._trigger_event('add', event)
 
 ####The following are common methods
 def ascii_to_hex(paswd):

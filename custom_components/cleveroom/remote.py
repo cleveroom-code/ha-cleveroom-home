@@ -119,7 +119,7 @@ class CleveroomRemote(KLWEntity,RemoteEntity):
         super().__init__(hass, device, client, gateway_id, auto_area)
 
         self._full_name = f"{self._full_name} - RC".strip()
-        self._object_id = generate_object_id(gateway_id, self._oid + "_RC")
+        self._object_id = generate_object_id(self._oid + "_RC")
         self.entity_id = f"remote.{self._object_id}"
         detail = device["detail"]
 
