@@ -9,7 +9,7 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_HOST, CONF_PORT, CONF_PASSWORD
 from homeassistant.data_entry_flow import FlowResult
 
-from . import (
+from .const import (
     DOMAIN,
     CONF_GATEWAY_ID,
     CONF_GATEWAY_TYPE,

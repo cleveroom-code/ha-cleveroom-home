@@ -2,8 +2,8 @@ from typing import cast
 
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.entity import DeviceInfo
-from . import KLWIOTClient, _LOGGER, generate_object_id, DOMAIN
-
+from . import KLWIOTClient, _LOGGER, generate_object_id
+from .const import DOMAIN
 
 class KLWEntity(Entity):
     """Base class for KLW entities."""

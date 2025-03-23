@@ -18,7 +18,8 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 import logging
 
 from .base import KLWEntity
-from . import (DOMAIN, KLWIOTClient, ENTITY_REGISTRY,
+from .const import DOMAIN
+from . import ( KLWIOTClient, ENTITY_REGISTRY,
                get_translation, is_alarm_control_panel, generate_object_id)
 
 _LOGGER = logging.getLogger(__name__)

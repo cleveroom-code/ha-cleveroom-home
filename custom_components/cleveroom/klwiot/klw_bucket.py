@@ -613,10 +613,23 @@ class DeviceBucket:
 
     def init_event(self, event, inst):
         D1, D2, D3, D4, D5, D6, D7, D8 = inst
-        default_floor_name = get_default_floor_name(D2, self._language)
-        default_room_name = get_default_room_name(D3, self._language)
-        default_device_name = get_default_scene_name(D4, self._language)
-        event['name'] = f'Event:{default_floor_name}{default_room_name}{default_device_name}'
+        if D1 == 237:
+            default_floor_name = get_default_floor_name(D2, self._language)
+            default_room_name = get_default_room_name(D3, self._language)
+            default_device_name = get_default_scene_name(D4, self._language)
+            if (default_floor_name is not None and
+                    default_room_name is not None and
+                    default_device_name is not None):
+                event['name'] = f'Event:{default_floor_name}{default_room_name}{default_device_name}'
+        elif D1 == 12 and 0<=D5<=23:
+            # 12,${floor},${room},${device}, 0, 255, 255
+            default_floor_name = get_default_floor_name(D2, self._language)
+            default_room_name = get_default_room_name(D3, self._language)
+            default_device_name = get_default_device_name(D4, self._language)
+            if (default_floor_name is not None and
+                    default_room_name is not None and
+                    default_device_name is not None):
+                event['name'] = f'Event:{default_floor_name}{default_room_name}{default_device_name} - RCKEY{D5+1}'
 
 
     def get_security_state(self, inst):

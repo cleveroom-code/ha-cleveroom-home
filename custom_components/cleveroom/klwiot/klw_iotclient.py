@@ -69,7 +69,7 @@ class KLWIOTClient(KLWEventEmitter):
         self._language = language
         ###----buissness----###
         self.data_buffer = []  # data cache
-        self.allowed_d1 = {243, 112, 250, 35, 37, 38, 62, 87, 22,237}
+        self.allowed_d1 = {243, 112, 250, 35, 37, 38, 62, 87, 22,237,12}
         self.heartbeat_interval = 15  # headbeat interval
         # Initialize buffers
         self.__devbuffer = DeviceBuffer(BufferType.DEVICEBUFFER)
@@ -718,11 +718,14 @@ class KLWIOTClient(KLWEventEmitter):
                         self.__sensorextendbuffer.add(ins, [0, 1, 2, 3, 5])
             elif cmd == 205:
                 self.__timebuffer.add(ins, [0, 1])
-            # elif cmd == 164:
-            #     self.__triggerbuffer.just_trigger_event_delay(ins,0.1)
+
         elif D1 == 237:
             #listen to scene actived
-            self.__triggerbuffer.just_trigger_event_delay(ins)
+            if self.is_valid_scene(D4) and self.is_valid_room(D3) and self.is_valid_floor(D2):
+                self.__triggerbuffer.just_trigger_event_delay(ins)
+        elif D1 == 12 and 0<=D5<=23 and D6==255 and D7==255:
+            if self.is_live_dev(D4) and self.is_valid_room(D3) and self.is_valid_floor(D2):
+                self.__triggerbuffer.just_trigger_event_delay(ins, 0.1)
 
 
     def handle_disconnection(self):

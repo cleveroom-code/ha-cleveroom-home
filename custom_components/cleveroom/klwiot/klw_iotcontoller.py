@@ -133,7 +133,8 @@ class KLWIOTController:
                 self.set_song_folder(payload)
             elif action == 'SetSource':
                 self.set_source(payload)
-
+            elif action == 'SetCommand':
+                self.set_command(payload)
 
         except Exception as e:
             self.log(f"Error in control: {e}")
@@ -657,3 +658,32 @@ class KLWIOTController:
         cmds = self.create_action(payload, create_inst)
         self.sort_cmds_with_frd(cmds)
         self.send_control_commands(cmds)
+
+    def set_command(self, payload) -> None:
+        """Set command
+        [{"cmd":[243,1,1,6,205,0,0,38]}]
+        """
+        self.log("SetCommand", payload)
+        commands = []
+        # 选好遍历payload数组
+        if payload is None:
+            return
+        if len(payload) < 1:
+            return
+        # 选好遍历cmd
+        # 遍历 payload
+        for item in payload:
+            cmd = item.get('cmd')
+            #判断datas是是str类型，如果是的话需要对str进行拆分 '243,154,1,6,206,0,0,38',然后转成数字类型
+            if cmd is None:
+                continue
+            if isinstance(cmd, str):
+                splits = cmd.split(',')
+                datas = [int(x) for x in splits]
+            else:
+                datas = item.get('cmd')
+            if len(datas) < 7:
+                continue
+            inst = Instruction(datas)
+            commands.append(inst)
+        self.send_control_commands(commands)

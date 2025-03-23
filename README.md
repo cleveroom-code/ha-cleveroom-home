@@ -36,7 +36,7 @@ python3 package-addon.py
 ---
 ## Network
 
-The interaction between the Keliw system and HomeAssistant uses TCP, and it's necessary to ensure that the plugin carrier device and the Keliw system gateway are on the same local network. If deploying using Docker, change the network mode to host, because device discovery uses UDP multicast, and you need to be in host mode to receive messages from the gateway.
+The interaction between the Cleveroom system and HomeAssistant uses TCP, and it's necessary to ensure that the plugin carrier device and the Cleveroom system gateway are on the same local network. If deploying using Docker, change the network mode to host, because device discovery uses UDP multicast, and you need to be in host mode to receive messages from the gateway.
 
 ## Configuration
 

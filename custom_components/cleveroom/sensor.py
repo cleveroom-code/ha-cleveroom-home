@@ -26,8 +26,9 @@ from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 from homeassistant.config_entries import ConfigEntry  # Import ConfigEntry
 
 from .base import KLWEntity
-from . import DOMAIN, ENTITY_REGISTRY, KLWIOTClient, DeviceType, device_registry_area_update, is_scene, is_sensor, \
+from . import ENTITY_REGISTRY, KLWIOTClient, DeviceType, device_registry_area_update, is_scene, is_sensor, \
     generate_object_id
+from .const import DOMAIN
 from homeassistant.helpers import floor_registry as fr
 from homeassistant.helpers import area_registry as ar
 from homeassistant.helpers import device_registry as dr

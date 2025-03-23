@@ -13,48 +13,15 @@ import re
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.const import CONF_HOST, CONF_PORT, CONF_PASSWORD
-import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers import translation
-from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from .const import CONF_GATEWAY_ID, CONF_GATEWAY_TYPE, CONF_AUTO_CREATE_AREA, MANUAL_CREATE_AREA, DOMAIN, \
+    GATEWAY_TYPE_SERVER, CONF_SECURE_CODE, GATEWAY_TYPES, CLIENTS_REGISTRY
+from .services import async_register_services
 from .klwiot import (KLWIOTClientLC, KLWIOTClient, KLWBroadcast, DeviceType, has_method
 , BucketDataManager)
 
 _LOGGER = logging.getLogger(__name__)
-DOMAIN = "cleveroom"
-# 配置项
-CONF_GATEWAY_ID = "gateway_id"
-CONF_GATEWAY_TYPE = "gateway_type"
-CONF_DISCOVERED_DEVICES = "discovered_devices"
-CONF_SYSTEM_LEVEL = "system_level"
-CONF_AUTO_CREATE_AREA = "auto_create_area"
-CONF_SECURE_CODE = "secure_code"
-# gateway.py work mode
-GATEWAY_TYPE_SERVER = 0
-GATEWAY_TYPE_CLIENT = 1
-
-GATEWAY_TYPES = {
-    GATEWAY_TYPE_CLIENT: "Client Mode",
-    GATEWAY_TYPE_SERVER: "Server Mode",
-}
-
-MANUAL_CREATE_AREA = 0
-AUTO_CREATE_AREA = 1
-CREATE_AREA_OPTIONS = {
-    AUTO_CREATE_AREA: "Yes",
-    MANUAL_CREATE_AREA: "No",
-}
-
-SYSTEM_LEVEL_OPTIONS = {
-    0: "≤50 ",
-    1: "≤100 ",
-    2: "≤200 ",
-    3: ">200 ",
-}
-
-# 默认值
-DEFAULT_PORT = 4196
-DEFAULT_SCAN_INTERVAL = 30
 
 # leveroom has implemented most platforms, but the "remote" platform is poorly supported.Therefore, we use 'event' instead of 'remote'.
 # so integration is paused.
@@ -142,6 +109,8 @@ async def async_setup_entry(hass: HomeAssistant,
         "auto_area": auto_area,
         "devices": [],
     }
+    #save client to CLIENTS_REGISTRY
+    CLIENTS_REGISTRY[gateway_id] = client
 
     # connect_result = await hass.async_add_executor_job(client.connect)
     if not await hass.async_add_executor_job(client.connect):
@@ -155,6 +124,9 @@ async def async_setup_entry(hass: HomeAssistant,
 
     # register listener after all flatfroms config
     client.on("on_device_change", on_device_change_wrapper(hass, entry))
+
+    # register services
+    await async_register_services(hass)
     return True
 
 

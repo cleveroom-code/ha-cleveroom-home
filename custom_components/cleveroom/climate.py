@@ -31,9 +31,10 @@ from homeassistant.config_entries import ConfigEntry  # Import ConfigEntry
 from homeassistant.helpers import floor_registry as fr
 from homeassistant.helpers import area_registry as ar
 from homeassistant.helpers import device_registry as dr
-from . import DOMAIN, ENTITY_REGISTRY, KLWIOTClient, DeviceType, device_registry_area_update, is_climate, is_heater, \
+from . import  ENTITY_REGISTRY, KLWIOTClient, DeviceType, device_registry_area_update, is_climate, is_heater, \
     generate_object_id
 from .base import KLWEntity
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 

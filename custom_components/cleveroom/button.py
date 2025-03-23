@@ -10,8 +10,9 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.config_entries import ConfigEntry
 
 import logging
-from . import (DOMAIN, ENTITY_REGISTRY, KLWIOTClient,
+from . import ( ENTITY_REGISTRY, KLWIOTClient,
                DeviceType, get_translation)
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 

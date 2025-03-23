@@ -17,9 +17,9 @@ from homeassistant.helpers import area_registry as ar
 from homeassistant.helpers import device_registry as dr
 
 from .base import KLWEntity
-from . import DOMAIN, ENTITY_REGISTRY, KLWIOTClient, DeviceType, device_registry_area_update, is_switch, \
+from . import ENTITY_REGISTRY, KLWIOTClient, DeviceType, device_registry_area_update, is_switch, \
     generate_object_id
-
+from .const import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 
