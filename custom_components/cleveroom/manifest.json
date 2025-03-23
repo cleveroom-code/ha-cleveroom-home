@@ -12,7 +12,7 @@
     "cryptography"
   ],
   "iot_class": "local_polling",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "config_flow": true,
    "icon": "mdi:home-automation"
 }
