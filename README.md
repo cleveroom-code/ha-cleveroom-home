@@ -34,6 +34,9 @@ python3 package-addon.py
 - 5Navigate to Settings > Devices & Services > Add Integration > Cleveroom. The Cleveroom configuration interface will appear.
 
 ---
+## Network
+
+The interaction between the Keliw system and HomeAssistant uses TCP, and it's necessary to ensure that the plugin carrier device and the Keliw system gateway are on the same local network. If deploying using Docker, change the network mode to host, because device discovery uses UDP multicast, and you need to be in host mode to receive messages from the gateway.
 
 ## Configuration
 

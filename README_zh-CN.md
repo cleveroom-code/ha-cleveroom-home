@@ -31,6 +31,10 @@ python3 package-addon.py
 - 5.在 设备与服务 > 添加集成 > `Cleveroom`. 会弹出 `Cleveroom` 的配置界面.
 
 ---
+## 网络设置
+
+科力屋系统和HomeAssistant的交互使用的是TCP方式，需要保证插件的载体设备和科力屋系统网关在同一个局域网中， 如果使用docker方式部署，网络改成host方式，因为发现设备使用UDP的组播，需要再host方式下可以收到网关
+
 ## 配置方法
 
 - 1.在系统 设置 > 设备与服务 > 添加集成 > `Cleveroom`. 会弹出 `Cleveroom` 的配置界面.
