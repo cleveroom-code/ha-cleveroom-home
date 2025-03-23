@@ -2,9 +2,5 @@
     "name": "Cleveroom",
     "content_in_root": false,
     "render_readme": true,
-    "domain": "cleveroom",
-    "homeassistant": "2024.8.0",
-    "documentation": "https://github.com/cleveroom-code/ha-cleveroom-home",
-    "issue_tracker": "https://github.com/cleveroom-code/ha-cleveroom-home/issues",
-    "country": "CN"
+    "homeassistant": "2024.8.0"
 }
