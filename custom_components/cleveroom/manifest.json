@@ -1,17 +1,17 @@
 {
   "domain": "cleveroom",
   "name": "Cleveroom",
-   "documentation": "https://github.com/cleveroom-code/ha-cleveroom-home",
-  "issue_tracker": "https://github.com/cleveroom-code/ha-cleveroom-home/issues",
-  "dependencies": [],
   "codeowners": [
     "@cleveroom-code"
   ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/cleveroom-code/ha-cleveroom-home",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/cleveroom-code/ha-cleveroom-home/issues",
   "requirements": [
     "aiofiles",
     "cryptography"
   ],
-  "iot_class": "local_polling",
-  "version": "1.0.3",
-  "config_flow": true
+  "version": "1.0.3"
 }

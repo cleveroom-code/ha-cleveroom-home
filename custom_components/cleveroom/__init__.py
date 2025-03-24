@@ -177,7 +177,7 @@ def get_translation(hass: HomeAssistant, key: str, default_value) -> str:
         hass, language, "entity"
     )
     # 'component.cleveroom.entity.button.reload_integration.name'
-    return translations.get(f"component.{DOMAIN}.entity.button.{key}", default_value)
+    return translations.get(f"component.{DOMAIN}.entity.button.{key}.name", default_value)
 
 
 async def discover_cleveroom_devices(hass: HomeAssistant, entry: ConfigEntry, client: KLWIOTClient):

@@ -40,10 +40,18 @@
   },
   "entity": {
     "button": {
-      "clear_cache": "Clear Cleveroom Gateway Device Cache",
-      "search_devices": "Search Cleveroom Gateway Device List",
-      "reload_integration": "Reload Cleveroom Integration",
-      "security_system_title": "Cleveroom Security System"
+     "clear_cache": {
+        "name": "Clear Cleveroom Gateway Device Cache"
+      },
+      "reload_integration": {
+        "name": "Reload Cleveroom Integration"
+      },
+      "search_devices": {
+        "name": "Search Cleveroom Gateway Device List"
+      },
+      "security_system_title": {
+        "name": "Cleveroom Security System"
+      }
     }
   }
 }
