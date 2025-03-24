@@ -1,0 +1,33 @@
+remote_command:
+  name: 向科力屋系统发送指令 (Send Command to Cleveroom System)
+  description: Send a command to a Cleveroom gateway.
+  fields:
+    gateway_id:
+      name: 网关ID(Gateway ID)
+      description: Select the Cleveroom gateway.
+      required: true
+      selector:
+        device:
+          integration: cleveroom
+          manufacturer: Cleveroom
+          model: "Gateway Server"
+          multiple: false
+    action:
+      name: 操作 (Action)
+      description: SendRCKey、SetCommand etc.
+      required: true
+      selector:
+        select:
+          options:
+            # 这里列出您的网关选项，但实际上它们将由代码动态生成
+            # 这些只是文档示例
+            - "SendRCKey"
+            - "SetCommand"
+          custom_value: true
+          mode: dropdown
+    payload:
+      name: 参数 (Payload)
+      description: 'Send key1 to device. e.g. [{"oid":"285593D9F9F6.243-199-1-6-113.3","value":0}]'
+      required: true
+      selector:
+        object:

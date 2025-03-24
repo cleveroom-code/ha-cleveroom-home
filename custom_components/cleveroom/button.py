@@ -10,6 +10,9 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.config_entries import ConfigEntry
 
 import logging
+
+from homeassistant.helpers.translation import async_get_translations
+
 from . import ( ENTITY_REGISTRY, KLWIOTClient,
                DeviceType, get_translation)
 from .const import DOMAIN
@@ -41,6 +44,7 @@ class ReloadIntegrationButton(ButtonEntity):
 
     def __init__(self, hass, client, entry, gateway_id) -> None:
         self._hass = hass
+        self._gateway_id = gateway_id
         name = get_translation(hass,
                                           "reload_integration",
                                           "Reload Cleveroom Integration")

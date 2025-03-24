@@ -14,9 +14,10 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.const import CONF_HOST, CONF_PORT, CONF_PASSWORD
 from homeassistant.helpers import translation
+from homeassistant.helpers import device_registry as dr
 
 from .const import CONF_GATEWAY_ID, CONF_GATEWAY_TYPE, CONF_AUTO_CREATE_AREA, MANUAL_CREATE_AREA, DOMAIN, \
-    GATEWAY_TYPE_SERVER, CONF_SECURE_CODE, GATEWAY_TYPES, CLIENTS_REGISTRY
+    GATEWAY_TYPE_SERVER, CONF_SECURE_CODE, GATEWAY_TYPES, CLIENTS_REGISTRY, GATEWAY_ID_TO_ENTRY_ID
 from .services import async_register_services
 from .klwiot import (KLWIOTClientLC, KLWIOTClient, KLWBroadcast, DeviceType, has_method
 , BucketDataManager)
@@ -111,6 +112,26 @@ async def async_setup_entry(hass: HomeAssistant,
     }
     #save client to CLIENTS_REGISTRY
     CLIENTS_REGISTRY[gateway_id] = client
+    # 将网关ID与配置条目关联
+    GATEWAY_ID_TO_ENTRY_ID[entry.entry_id] = gateway_id
+
+    # 注册网关作为设备
+    device_registry = dr.async_get(hass)
+    gateway_device = device_registry.async_get_or_create(
+        config_entry_id=entry.entry_id,
+        identifiers={(DOMAIN, gateway_id)},
+        name=f"Cleveroom Gateway ({gateway_id})",
+        manufacturer="Cleveroom",
+        model="Gateway Server"
+    )
+
+    # device_registry.async_update_device(
+    #     gateway_device.id,
+    #     connection_info={
+    #         (dr.CONNECTION_NETWORK_MAC, getattr(client, "mac", "unknown")),
+    #         (dr.CONNECTION_NETWORK_IP, host),
+    #     }
+    # )
 
     # connect_result = await hass.async_add_executor_job(client.connect)
     if not await hass.async_add_executor_job(client.connect):
@@ -153,9 +174,10 @@ def get_translation(hass: HomeAssistant, key: str, default_value) -> str:
     """
     language = hass.config.language
     translations = translation.async_get_cached_translations(
-        hass, language, DOMAIN
+        hass, language, "entity"
     )
-    return translations.get(f"component.{DOMAIN}.cleveroom.{key}", default_value)
+    # 'component.cleveroom.entity.button.reload_integration.name'
+    return translations.get(f"component.{DOMAIN}.entity.button.{key}", default_value)
 
 
 async def discover_cleveroom_devices(hass: HomeAssistant, entry: ConfigEntry, client: KLWIOTClient):

@@ -38,10 +38,12 @@
       }
     }
   },
-  "cleveroom": {
-    "clear_cache": "清除科力屋網關設備快取",
-    "search_devices": "搜索科力屋網關設備列表",
-    "reload_integration": "重新載入科力屋集成插件",
-    "security_system_title": "科力屋安防系統"
+  "entity": {
+    "button": {
+      "clear_cache": "清除科力屋網關設備快取",
+      "search_devices": "搜索科力屋網關設備列表",
+      "reload_integration": "重新載入科力屋集成插件",
+      "security_system_title": "科力屋安防系統"
+    }
   }
 }
