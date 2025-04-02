@@ -13,10 +13,10 @@ This is a plugin for Home Assistant that allows you to integrate devices from th
 ---
 
 ##Online Installation
+- In HACS, search for an installation named `cleveroom` and click to download and install (Recommended).
+- In HACS -> Custom Repositories, add the plugin's `repository` as "https://github.com/cleveroom-code/ha-cleveroom-home" and select the category as `Integration`. Choose the plugin named `Cleveroom` and click Download to install.
 
-- 1.  In HACS -> Custom Repositories, add the plugin's `repository` as "https://github.com/cleveroom-code/ha-cleveroom-home" and select the category as `Integration`. Choose the plugin named `Cleveroom` and click Download to install.
-
-- 2.  Restart Home Assistant.
+- Restart Home Assistant.
 
 ## Offline Installation
 

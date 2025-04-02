@@ -8,10 +8,9 @@
 ---
 
 ## 在线安装
-
-- 1.在 HACS -> 自定义存储库, 添加插件的`存储库`为 "https://github.com/cleveroom-code/ha-cleveroom-home" 并选择类别为`集成`. 选择名为 `Cleveroom` 的插件并点击下载安装.
-
-- 2.重启 Home Assistant .
+- 1.在 HACS 搜索名为 `cleveroom` 的插件并点击下载安装(推荐的方式).
+- 2.在 HACS -> 自定义存储库, 添加插件的`存储库`为 "https://github.com/cleveroom-code/ha-cleveroom-home" 并选择类别为`集成`. 选择名为 `Cleveroom` 的插件并点击下载安装.
+- 3.重启 Home Assistant .
 ## 离线安装
 
 由于网络的限制，通过hacs或者离线在安装依赖的时候都不容易成功，为了保证插件的可用，我们把依赖的包都打包到插件中，请按照如下步骤操作
