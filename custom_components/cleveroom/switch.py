@@ -16,6 +16,7 @@ from homeassistant.helpers import floor_registry as fr
 from homeassistant.helpers import area_registry as ar
 from homeassistant.helpers import device_registry as dr
 
+from config.custom_components.cleveroom import is_cover
 from .base import KLWEntity
 from . import ENTITY_REGISTRY, KLWIOTClient, DeviceType, device_registry_area_update, is_switch, \
     generate_object_id
@@ -33,13 +34,19 @@ async def async_setup_entry(
     client = gateway_data["client"]
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
+    adapted_homekit = gateway_data["adapted_homekit"]
     floor_registry = fr.async_get(hass)
     area_registry = ar.async_get(hass)
     device_registry = dr.async_get(hass)
     switches = []
     for device in devices:
+        cover_to_switch = False
+        if adapted_homekit == 1 and is_cover(device):
+            _LOGGER.debug("adapted_homekit is enabled, cover will be treated as switch")
+            cover_to_switch = True
+
         try:
-            if is_switch(device):
+            if is_switch(device) or cover_to_switch:
                 if auto_area == 1:
                     await device_registry_area_update(
                         floor_registry, area_registry, device_registry, entry, device)

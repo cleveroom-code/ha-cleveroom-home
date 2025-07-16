@@ -11,6 +11,7 @@
           "password": "密码",
           "secure_code": "校验码",
           "auto_create_area": "自动创建区域",
+          "adaptation_homekit": "适配 HomeKit(Cover)",
           "system_level": "系统规模(子设备数量级)"
         }
       },

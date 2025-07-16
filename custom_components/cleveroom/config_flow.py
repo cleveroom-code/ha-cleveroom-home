@@ -19,7 +19,9 @@ from .const import (
     CONF_AUTO_CREATE_AREA,
     CREATE_AREA_OPTIONS,
     CONF_SECURE_CODE,
-    SYSTEM_LEVEL_OPTIONS
+    SYSTEM_LEVEL_OPTIONS,
+    CONF_ADAPTATION_HOMEKIT,
+    ADAPTATION_HOMEKIT_OPTIONS,
 )
 from . import KLWBroadcast
 
@@ -59,6 +61,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
         vol.Required(CONF_PASSWORD): str,
         vol.Optional(CONF_SECURE_CODE): str,
         vol.Required(CONF_AUTO_CREATE_AREA): vol.In(CREATE_AREA_OPTIONS),
+        vol.Required(CONF_ADAPTATION_HOMEKIT): vol.In(ADAPTATION_HOMEKIT_OPTIONS),
         # vol.Required(CONF_SYSTEM_LEVEL): vol.In(SYSTEM_LEVEL_OPTIONS),
     }
 )
@@ -230,6 +233,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     vol.Required(CONF_PASSWORD): str,
                     vol.Required(CONF_SECURE_CODE): str,
                     vol.Required(CONF_AUTO_CREATE_AREA): vol.In(CREATE_AREA_OPTIONS),
+                    vol.Required(CONF_ADAPTATION_HOMEKIT): vol.In(ADAPTATION_HOMEKIT_OPTIONS),
                 }
             )
         else:
@@ -241,5 +245,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     vol.Required(CONF_PASSWORD): str,
                     # vol.Optional(CONF_SECURE_CODE): str,
                     vol.Required(CONF_AUTO_CREATE_AREA): vol.In(CREATE_AREA_OPTIONS),
+                    vol.Required(CONF_ADAPTATION_HOMEKIT): vol.In(ADAPTATION_HOMEKIT_OPTIONS),
                 }
             )

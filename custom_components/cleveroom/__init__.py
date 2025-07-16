@@ -17,7 +17,7 @@ from homeassistant.helpers import translation
 from homeassistant.helpers import device_registry as dr
 
 from .const import CONF_GATEWAY_ID, CONF_GATEWAY_TYPE, CONF_AUTO_CREATE_AREA, MANUAL_CREATE_AREA, DOMAIN, \
-    GATEWAY_TYPE_SERVER, CONF_SECURE_CODE, GATEWAY_TYPES, CLIENTS_REGISTRY, GATEWAY_ID_TO_ENTRY_ID
+    GATEWAY_TYPE_SERVER, CONF_SECURE_CODE, GATEWAY_TYPES, CLIENTS_REGISTRY, GATEWAY_ID_TO_ENTRY_ID, NO_VALUE,YES_VALUE,CONF_ADAPTATION_HOMEKIT
 from .services import async_register_services
 from .klwiot import (KLWIOTClientLC, KLWIOTClient, KLWBroadcast, DeviceType, has_method
 , BucketDataManager)
@@ -25,8 +25,8 @@ from .klwiot import (KLWIOTClientLC, KLWIOTClient, KLWBroadcast, DeviceType, has
 _LOGGER = logging.getLogger(__name__)
 
 # leveroom has implemented most platforms, but the "remote" platform is poorly supported.Therefore, we use 'event' instead of 'remote'.
-# so integration is paused.
-PLATFORMS = ["light", "sensor", "climate", "cover", "switch", "binary_sensor", "fan"
+# so integration is paused., "cover"
+PLATFORMS = ["light", "sensor", "climate", "switch", "binary_sensor", "fan"
     , "button", "alarm_control_panel","scene", "media_player","event"]
 # PLATFORMS = ["event","button"]
 ENTITY_REGISTRY = {}
@@ -41,6 +41,7 @@ async def async_setup_entry(hass: HomeAssistant,
     port = entry.data[CONF_PORT]
     password = entry.data[CONF_PASSWORD]
     auto_area = entry.data.get(CONF_AUTO_CREATE_AREA, MANUAL_CREATE_AREA)
+    adapted_homekit = entry.data.get(CONF_ADAPTATION_HOMEKIT, NO_VALUE)
     language = hass.config.language
 
     await translation.async_load_integrations(hass, {DOMAIN})
@@ -108,6 +109,7 @@ async def async_setup_entry(hass: HomeAssistant,
         "password": password,
         "client": client,
         "auto_area": auto_area,
+        "adapted_homekit":adapted_homekit,
         "devices": [],
     }
     #save client to CLIENTS_REGISTRY

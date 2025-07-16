@@ -36,7 +36,12 @@ async def async_setup_entry(  # Changed to async_setup_entry
     devices = gateway_data["devices"]
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
+    adapted_homekit = gateway_data["adapted_homekit"]
     client = hass.data[DOMAIN][entry.entry_id]["client"]
+    # If adapted_homekit is enabled, do not setup cover entities
+    if adapted_homekit == 1:
+        _LOGGER.debug("adapted_homekit is enabled, not setup cover entities")
+        return
 
     floor_registry = fr.async_get(hass)
     area_registry = ar.async_get(hass)
@@ -100,12 +105,19 @@ class CleveroomCover(KLWEntity,CoverEntity):
 
         self._error_message = None
         # 设置支持的功能
-        self._attr_supported_features = (
+        if device['detail'].get("scale", 255)<=10:
+            self._attr_supported_features = (
                 CoverEntityFeature.OPEN
                 | CoverEntityFeature.CLOSE
-                | CoverEntityFeature.SET_POSITION
+                # | CoverEntityFeature.SET_POSITION
                 | CoverEntityFeature.STOP
-        )
+            )
+        else:
+            self._attr_supported_features = (
+                    CoverEntityFeature.OPEN
+                    | CoverEntityFeature.CLOSE
+                    | CoverEntityFeature.STOP
+            )
 
     def init_or_update_entity_state(self, device):
 

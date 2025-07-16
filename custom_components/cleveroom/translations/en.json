@@ -11,6 +11,7 @@
           "password": "Password",
           "secure_code": "Secure Code",
           "auto_create_area": "Auto Generate Area",
+          "adaptation_homekit": "Adapt HomeKit(Cover)",
           "system_level": "System Scale (Sub-device Quantity)"
         }
       },
