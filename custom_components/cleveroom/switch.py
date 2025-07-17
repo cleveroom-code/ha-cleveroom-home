@@ -16,10 +16,9 @@ from homeassistant.helpers import floor_registry as fr
 from homeassistant.helpers import area_registry as ar
 from homeassistant.helpers import device_registry as dr
 
-from config.custom_components.cleveroom import is_cover
 from .base import KLWEntity
 from . import ENTITY_REGISTRY, KLWIOTClient, DeviceType, device_registry_area_update, is_switch, \
-    generate_object_id
+    generate_object_id,is_cover
 from .const import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
@@ -39,6 +38,7 @@ async def async_setup_entry(
     area_registry = ar.async_get(hass)
     device_registry = dr.async_get(hass)
     switches = []
+
     for device in devices:
         cover_to_switch = False
         if adapted_homekit == 1 and is_cover(device):

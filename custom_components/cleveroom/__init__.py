@@ -26,8 +26,7 @@ _LOGGER = logging.getLogger(__name__)
 
 # leveroom has implemented most platforms, but the "remote" platform is poorly supported.Therefore, we use 'event' instead of 'remote'.
 # so integration is paused., "cover"
-PLATFORMS = ["light", "sensor", "climate", "switch", "binary_sensor", "fan"
-    , "button", "alarm_control_panel","scene", "media_player","event"]
+PLATFORMS = ["light", "sensor", "climate", "switch","cover", "binary_sensor", "fan", "button", "alarm_control_panel","scene", "media_player","event"]
 # PLATFORMS = ["event","button"]
 ENTITY_REGISTRY = {}
 
