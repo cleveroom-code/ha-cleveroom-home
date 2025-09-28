@@ -46,6 +46,7 @@ async def async_setup_entry(
     client = gateway_data["client"]
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
+    predictive_feedback = gateway_data["predictive_feedback"]
     floor_registry = fr.async_get(hass)
     area_registry = ar.async_get(hass)
     device_registry = dr.async_get(hass)
@@ -57,7 +58,7 @@ async def async_setup_entry(
                 if auto_area == 1:
                     await device_registry_area_update(
                         floor_registry, area_registry, device_registry, entry, device)
-                player = CleveroomMediaPlayer(hass, device, client, gateway_id,auto_area)
+                player = CleveroomMediaPlayer(hass, device, client, gateway_id,auto_area,predictive_feedback)
                 media_players.append(player)
 
                 ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -78,7 +79,7 @@ async def async_setup_entry(
                             device_registry_area_update(
                                 floor_registry, area_registry, device_registry, entry, device),
                             hass.loop)
-                    player = CleveroomMediaPlayer(hass, device, client, gateway_id,auto_area)
+                    player = CleveroomMediaPlayer(hass, device, client, gateway_id,auto_area,predictive_feedback)
                     asyncio.run_coroutine_threadsafe(
                         async_add_entities_wrapper(hass, async_add_entities, [player], False), hass.loop)
                     ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -98,8 +99,8 @@ async def async_setup_entry(
 
 class CleveroomMediaPlayer(KLWEntity,MediaPlayerEntity):
 
-    def __init__(self, hass, device, client, gateway_id, auto_area):
-        super().__init__(hass, device, client, gateway_id, auto_area)
+    def __init__(self, hass, device, client, gateway_id, auto_area,predictive_feedback):
+        super().__init__(hass, device, client, gateway_id, auto_area,predictive_feedback)
 
         self.entity_id = f"media_player.{self._object_id}"
 

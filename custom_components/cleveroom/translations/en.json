@@ -12,6 +12,7 @@
           "secure_code": "Secure Code",
           "auto_create_area": "Auto Generate Area",
           "adaptation_homekit": "Adapt HomeKit(Cover)",
+          "predictive_feedback": "Predictive Feedback State",
           "system_level": "System Scale (Sub-device Quantity)"
         }
       },

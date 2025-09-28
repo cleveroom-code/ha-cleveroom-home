@@ -34,6 +34,7 @@ async def async_setup_entry(
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
     adapted_homekit = gateway_data["adapted_homekit"]
+    predictive_feedback = gateway_data["predictive_feedback"]
     floor_registry = fr.async_get(hass)
     area_registry = ar.async_get(hass)
     device_registry = dr.async_get(hass)
@@ -48,9 +49,8 @@ async def async_setup_entry(
         try:
             if is_switch(device) or cover_to_switch:
                 if auto_area == 1:
-                    await device_registry_area_update(
-                        floor_registry, area_registry, device_registry, entry, device)
-                toggle = CleveroomSwitch(hass, device, client, gateway_id,auto_area)
+                    await device_registry_area_update(floor_registry, area_registry, device_registry, entry, device)
+                toggle = CleveroomSwitch(hass, device, client, gateway_id,auto_area,predictive_feedback)
                 switches.append(toggle)
 
                 ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -71,7 +71,7 @@ async def async_setup_entry(
                             device_registry_area_update(
                                 floor_registry, area_registry, device_registry, entry, device),
                             hass.loop)
-                    toggle = CleveroomSwitch(hass, device, client, gateway_id,auto_area)
+                    toggle = CleveroomSwitch(hass, device, client, gateway_id,auto_area,predictive_feedback)
                     asyncio.run_coroutine_threadsafe(
                         async_add_entities_wrapper(hass, async_add_entities, [toggle], False), hass.loop)
                     ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -91,8 +91,8 @@ async def async_setup_entry(
 
 class CleveroomSwitch(KLWEntity,SwitchEntity):
 
-    def __init__(self, hass, device, client, gateway_id, auto_area):
-        super().__init__(hass, device, client, gateway_id, auto_area)
+    def __init__(self, hass, device, client, gateway_id, auto_area,predictive_feedback):
+        super().__init__(hass, device, client, gateway_id, auto_area,predictive_feedback)
 
         self.entity_id = f"switch.{self._object_id}"
 
@@ -106,6 +106,7 @@ class CleveroomSwitch(KLWEntity,SwitchEntity):
         detail = device["detail"]
 
         self._is_on = detail.get("on", self._is_on)
+        _LOGGER.debug(f'Shade Feedback:{self._oid}=> {self._is_on}')
 
     @property
     def unique_id(self) -> str:
@@ -125,8 +126,27 @@ class CleveroomSwitch(KLWEntity,SwitchEntity):
 
     async def async_turn_on(self, **kwargs):
         self._client.controller.control("DeviceOn", [{"oid": self._oid}])
-        self.async_write_ha_state()
+        device = self._client.devicebucket.get_device_from_database(self._oid)
+        if is_cover(device):
+            await asyncio.sleep(2)
+            self._is_on = True
+            self.set_device_detail_field("on", True)
+            self.async_write_ha_state()
+
+        else:
+            self._is_on = True
+            self.set_device_detail_field("on", True)
+            self.async_write_ha_state()
 
     async def async_turn_off(self, **kwargs):
         self._client.controller.control("DeviceOff", [{"oid": self._oid}])
-        self.async_write_ha_state()
+        device = self._client.devicebucket.get_device_from_database(self._oid)
+        if is_cover(device):
+            await asyncio.sleep(2)
+            self._is_on = False
+            self.set_device_detail_field("on", False)
+            self.async_write_ha_state()
+        else:
+            self._is_on = False
+            self.set_device_detail_field("on", False)
+            self.async_write_ha_state()

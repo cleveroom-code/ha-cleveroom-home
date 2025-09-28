@@ -54,6 +54,7 @@ async def async_setup_entry(
     client = gateway_data["client"]
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
+    predictive_feedback = gateway_data["predictive_feedback"]
     floor_registry = fr.async_get(hass)
     area_registry = ar.async_get(hass)
     device_registry = dr.async_get(hass)
@@ -63,9 +64,8 @@ async def async_setup_entry(
             if is_light(device):
 
                 if auto_area == 1:
-                    await device_registry_area_update(
-                        floor_registry, area_registry, device_registry, entry, device)
-                light = CleveroomLight(hass, device, client, gateway_id,auto_area)
+                    await device_registry_area_update(floor_registry, area_registry, device_registry, entry, device)
+                light = CleveroomLight(hass, device, client, gateway_id,auto_area,predictive_feedback)
                 lights.append(light)
                 ENTITY_REGISTRY.setdefault(entry.entry_id, {})
                 ENTITY_REGISTRY[entry.entry_id][light.unique_id] = light
@@ -86,7 +86,7 @@ async def async_setup_entry(
                             device_registry_area_update(
                                 floor_registry, area_registry, device_registry, entry, device),
                             hass.loop)
-                    light = CleveroomLight(hass, device, client, gateway_id,auto_area)
+                    light = CleveroomLight(hass, device, client, gateway_id,auto_area,predictive_feedback)
                     asyncio.run_coroutine_threadsafe(
                         async_add_entities_wrapper(hass, async_add_entities, [light], False), hass.loop)
                     ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -107,8 +107,8 @@ async def async_setup_entry(
 
 class CleveroomLight(KLWEntity,LightEntity):
 
-    def __init__(self, hass, device, client, gateway_id, auto_area):
-        super().__init__(hass, device, client, gateway_id, auto_area)
+    def __init__(self, hass, device, client, gateway_id, auto_area,predictive_feedback):
+        super().__init__(hass, device, client, gateway_id, auto_area,predictive_feedback)
 
         self.entity_id = f"light.{self._object_id}"
 
@@ -145,6 +145,7 @@ class CleveroomLight(KLWEntity,LightEntity):
         detail = device["detail"]
 
         self._is_on = detail.get("on", self._is_on)
+
         if detail['category'] == DeviceType.RGB_LIGHT:
             if "rgb" in detail:
                 self._rgb_color = (
@@ -208,6 +209,9 @@ class CleveroomLight(KLWEntity,LightEntity):
 
     async def async_turn_on(self, **kwargs):
         _LOGGER.debug(f"Turn on: {self._oid}, params: {kwargs}")
+        # if not self._is_on:
+
+
 
         if ATTR_BRIGHTNESS in kwargs:
             brightness = int(kwargs[ATTR_BRIGHTNESS] / 255 * 100)
@@ -254,13 +258,18 @@ class CleveroomLight(KLWEntity,LightEntity):
         if not self._is_on:
             self._client.controller.control("DeviceOn", [{"oid": self._oid}])
         self._is_on = True
+        self.set_device_detail_field("on", True)
         self.async_write_ha_state()
+        self._client.controller.control("DeviceOn", [{"oid": self._oid}])
+
 
     async def async_turn_off(self, **kwargs):
         _LOGGER.debug(f"Turn off: {self._oid}")
-        self._client.controller.control("DeviceOff", [{"oid": self._oid}])
         self._is_on = False
+        self.set_device_detail_field("on", False)
         self.async_write_ha_state()
+        self._client.controller.control("DeviceOff", [{"oid": self._oid}])
+
 
     def _hex_to_rgb(self, hex_color):
         hex_color = hex_color.lstrip("#")

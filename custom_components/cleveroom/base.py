@@ -8,7 +8,7 @@ from .const import DOMAIN
 class KLWEntity(Entity):
     """Base class for KLW entities."""
 
-    def __init__(self, hass, device, client, gateway_id,auto_area):
+    def __init__(self, hass, device, client, gateway_id,auto_area,predictive_feedback):
         """Initialize the KLW entity."""
         self.hass = hass
         self._client = cast(KLWIOTClient, client)
@@ -18,6 +18,7 @@ class KLWEntity(Entity):
         self._full_name = f"{detail.get("fName", "")} {detail.get("rName", "")} {detail.get("dName", "")}".strip()
         self._object_id = generate_object_id( self._oid)
         self._name = self._full_name
+        self.predictive_feedback = predictive_feedback
 
         if auto_area == 1:
             self._attr_device_info = DeviceInfo(
@@ -48,10 +49,31 @@ class KLWEntity(Entity):
         device = self._client.devicebucket.get_device_from_database(self._oid)
         return device is not None
 
-    # async def async_added_to_hass(self) -> None:
-    #     """Run when entity about to be added to hass."""
-    #     await super().async_added_to_hass()
-    #     self.async_write_ha_state()
+    def set_device_detail_field(self, field: str, value):
+        """
+        Dynamically set a field in the device's detail dictionary.
+        Args:
+            field (str): The field name to set, e.g. 'on', 'gear', etc.
+            value: The value to set.
+        """
+
+        if self.predictive_feedback == 1:
+            #support predictive feedback
+            device = self._client.devicebucket.get_device_from_database(self._oid)
+            if device is None:
+                _LOGGER.error(f"Device not found: {self._oid}")
+                return False
+
+            detail = device.get("detail")
+            if detail is None or not isinstance(detail, dict):
+                _LOGGER.error(f"Device {self._oid} has no detail map")
+                return False
+
+            old_value = detail.get(field)
+            detail[field] = value
+            _LOGGER.info(f"Set device {self._oid} detail field '{field}' from {old_value} to {value}")
+
+        return True
 
     async def async_update(self):
         """

@@ -82,6 +82,7 @@ async def async_setup_entry(
     client = gateway_data["client"]
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
+    predictive_feedback = gateway_data["predictive_feedback"]
     floor_registry = fr.async_get(hass)
     area_registry = ar.async_get(hass)
     device_registry = dr.async_get(hass)
@@ -93,7 +94,7 @@ async def async_setup_entry(
                 if auto_area == 1:
                     await device_registry_area_update(
                         floor_registry, area_registry, device_registry, entry, device)
-                climate = CleveroomClimate(hass, device, client, gateway_id,auto_area)
+                climate = CleveroomClimate(hass, device, client, gateway_id,auto_area,predictive_feedback)
                 climates.append(climate)
                 ENTITY_REGISTRY.setdefault(entry.entry_id, {})
                 ENTITY_REGISTRY[entry.entry_id][climate.unique_id] = climate
@@ -101,7 +102,7 @@ async def async_setup_entry(
                 if auto_area == 1:
                     await device_registry_area_update(
                         floor_registry, area_registry, device_registry, entry, device)
-                climate = CleveroomFloorHeating(hass, device, client, gateway_id,auto_area)
+                climate = CleveroomFloorHeating(hass, device, client, gateway_id,auto_area,predictive_feedback)
                 climates.append(climate)
                 ENTITY_REGISTRY.setdefault(entry.entry_id, {})
                 ENTITY_REGISTRY[entry.entry_id][climate.unique_id] = climate
@@ -121,7 +122,7 @@ async def async_setup_entry(
                             device_registry_area_update(
                                 floor_registry, area_registry, device_registry, entry, device),
                             hass.loop)
-                    climate = CleveroomClimate(hass, device, client, gateway_id,auto_area)
+                    climate = CleveroomClimate(hass, device, client, gateway_id,auto_area,predictive_feedback)
                     asyncio.run_coroutine_threadsafe(
                         async_add_entities_wrapper(hass, async_add_entities, [climate], False), hass.loop)
                     ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -133,7 +134,7 @@ async def async_setup_entry(
                             device_registry_area_update(
                                 floor_registry, area_registry, device_registry, entry, device),
                             hass.loop)
-                    climate = CleveroomFloorHeating(hass, device, client, gateway_id,auto_area)
+                    climate = CleveroomFloorHeating(hass, device, client, gateway_id,auto_area,predictive_feedback)
                     asyncio.run_coroutine_threadsafe(
                         async_add_entities_wrapper(hass, async_add_entities, [climate], False), hass.loop)
                     ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -154,9 +155,9 @@ async def async_setup_entry(
 class CleveroomClimate(KLWEntity,ClimateEntity):
     """Representation of a Cleveroom climate device."""
 
-    def __init__(self, hass, device, client, gateway_id, auto_area):
+    def __init__(self, hass, device, client, gateway_id, auto_area,predictive_feedback):
         """Initialize the climate device."""
-        super().__init__(hass, device, client, gateway_id, auto_area)
+        super().__init__(hass, device, client, gateway_id, auto_area,predictive_feedback)
         self.entity_id = f"climate.{self._object_id}"
 
         # self._temperature = 0
@@ -330,9 +331,11 @@ class CleveroomClimate(KLWEntity,ClimateEntity):
         mode = HA_TO_CLEVEROOM_HVAC_MODE[hvac_mode]
         if mode == 4:
             self._client.controller.control("DeviceOff", [{"oid": self._oid}])
+            self.set_device_detail_field("on", False)
         else:
             if not self._device["detail"]["on"]:
                 self._client.controller.control("DeviceOn", [{"oid": self._oid}])
+                self.set_device_detail_field("on", True)
             if mode == 5:
                 self._client.controller.control("SetAuto", [{"oid": self._oid, "value": 1}])
             else:
@@ -364,9 +367,9 @@ class CleveroomClimate(KLWEntity,ClimateEntity):
 class CleveroomFloorHeating(KLWEntity,ClimateEntity):
     """Representation of a Cleveroom floor heating device."""
 
-    def __init__(self, hass, device, client, gateway_id, auto_area):
+    def __init__(self, hass, device, client, gateway_id, auto_area,predictive_feedback):
         """Initialize the floor heating device."""
-        super().__init__(hass, device, client, gateway_id, auto_area)
+        super().__init__(hass, device, client, gateway_id, auto_area,predictive_feedback)
 
         self._current_humidity = None
 
@@ -462,6 +465,7 @@ class CleveroomFloorHeating(KLWEntity,ClimateEntity):
         try:
             self._client.controller.control("DeviceOn", [{"oid": self._oid}])
             self._hvac_mode = HVACMode.HEAT  #
+            self.set_device_detail_field("on", True)
             self.async_write_ha_state()
         except Exception as e:
             _LOGGER.error(f"Failed to turn on floor heating {self._oid}: {e}")
@@ -472,6 +476,7 @@ class CleveroomFloorHeating(KLWEntity,ClimateEntity):
         try:
             self._client.controller.control("DeviceOff", [{"oid": self._oid}])
             self._hvac_mode = HVACMode.OFF
+            self.set_device_detail_field("on", False)
             self.async_write_ha_state()
         except Exception as e:
             _LOGGER.error(f"Failed to turn off floor heating {self._oid}: {e}")

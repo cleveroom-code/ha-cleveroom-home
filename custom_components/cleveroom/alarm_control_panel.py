@@ -50,12 +50,13 @@ async def async_setup_entry(
     client = gateway_data["client"]
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
+    predictive_feedback = gateway_data["predictive_feedback"]
     securitys = []
 
     for device in devices:
         try:
             if is_alarm_control_panel(device):
-                security = CleveroomAlarmControlPanel(hass, device, client, gateway_id,auto_area)
+                security = CleveroomAlarmControlPanel(hass, device, client, gateway_id,auto_area,predictive_feedback)
                 securitys.append(security)
                 ENTITY_REGISTRY.setdefault(entry.entry_id, {})
                 ENTITY_REGISTRY[entry.entry_id][security.unique_id] = security
@@ -69,7 +70,7 @@ async def async_setup_entry(
             try:
                 if is_alarm_control_panel(device):
                     _LOGGER.info(f"add alarm panel new devices: {device['oid']}")
-                    security = CleveroomAlarmControlPanel(hass, device, client, gateway_id,auto_area)
+                    security = CleveroomAlarmControlPanel(hass, device, client, gateway_id,auto_area,predictive_feedback)
                     asyncio.run_coroutine_threadsafe(
                         async_add_entities_wrapper(hass, async_add_entities, [security], False), hass.loop)
                     ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -87,9 +88,9 @@ async def async_setup_entry(
 class CleveroomAlarmControlPanel(KLWEntity,AlarmControlPanelEntity):
     """Representation of a KLWIOT Alarm Control Panel."""
 
-    def __init__(self, hass, device, client, gateway_id, auto_area) -> None:
+    def __init__(self, hass, device, client, gateway_id, auto_area,predictive_feedback) -> None:
         """Initialize the alarm control panel."""
-        super().__init__(hass, device, client, gateway_id, auto_area)
+        super().__init__(hass, device, client, gateway_id, auto_area,predictive_feedback)
 
         self._attr_alarm_state = AlarmControlPanelState.DISARMED  # Initial state using _attr_alarm_state
         self._attr_name = get_translation(hass, "security_system_title", "Cleveroom Security System")

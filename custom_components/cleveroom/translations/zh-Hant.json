@@ -12,6 +12,7 @@
           "secure_code": "校驗碼",
           "auto_create_area": "自動創建區域",
            "adaptation_homekit": "適配 HomeKit(Cover)",
+           "predictive_feedback": "狀態提前反饋",
           "system_level": "系統規模(子設備數量級)"
         }
       },

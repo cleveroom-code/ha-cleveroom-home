@@ -35,6 +35,7 @@ async def async_setup_entry(
     client = gateway_data["client"]
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
+    predictive_feedback = gateway_data["predictive_feedback"]
     floor_registry = fr.async_get(hass)
     area_registry = ar.async_get(hass)
     device_registry = dr.async_get(hass)
@@ -45,7 +46,7 @@ async def async_setup_entry(
                 if auto_area == 1:
                     await device_registry_area_update(
                         floor_registry, area_registry, device_registry, entry, device)
-                ventilation = CleveroomFan(hass, device, client, gateway_id,auto_area)
+                ventilation = CleveroomFan(hass, device, client, gateway_id,auto_area,predictive_feedback)
                 ventilations.append(ventilation)
 
                 ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -67,7 +68,7 @@ async def async_setup_entry(
                             device_registry_area_update(
                                 floor_registry, area_registry, device_registry, entry, device),
                             hass.loop)
-                    ventilation = CleveroomFan(hass, device, client, gateway_id,auto_area)
+                    ventilation = CleveroomFan(hass, device, client, gateway_id,auto_area,predictive_feedback)
                     asyncio.run_coroutine_threadsafe(
                         async_add_entities_wrapper(hass, async_add_entities, [ventilation], False), hass.loop)
                     ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -88,9 +89,9 @@ async def async_setup_entry(
 class CleveroomFan(KLWEntity,FanEntity):
     """Representation of a Cleveroom ventilation device."""
 
-    def __init__(self, hass, device, client, gateway_id, auto_area):
+    def __init__(self, hass, device, client, gateway_id, auto_area,predictive_feedback):
         """Initialize the ventilation device."""
-        super().__init__(hass, device, client, gateway_id, auto_area)
+        super().__init__(hass, device, client, gateway_id, auto_area,predictive_feedback)
 
         self.entity_id = f"fan.{self._object_id}"
 
@@ -146,6 +147,7 @@ class CleveroomFan(KLWEntity,FanEntity):
         try:
             self._client.controller.control("DeviceOn", [{"oid": self._oid}])
             self._is_on = True
+            self.set_device_detail_field("on", True)
             self.async_write_ha_state()
         except Exception as e:
             _LOGGER.error(f"Failed to turn on ventilation {self._oid}: {e}")
@@ -156,6 +158,7 @@ class CleveroomFan(KLWEntity,FanEntity):
         try:
             self._client.controller.control("DeviceOff", [{"oid": self._oid}])
             self._is_on = False
+            self.set_device_detail_field("on", False)
             self.async_write_ha_state()
         except Exception as e:
             _LOGGER.error(f"Failed to turn off ventilation {self._oid}: {e}")

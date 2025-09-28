@@ -37,6 +37,7 @@ async def async_setup_entry(  # Changed to async_setup_entry
     gateway_id = gateway_data["gateway_id"]
     auto_area = gateway_data["auto_area"]
     adapted_homekit = gateway_data["adapted_homekit"]
+    predictive_feedback = gateway_data["predictive_feedback"]
     client = hass.data[DOMAIN][entry.entry_id]["client"]
     # If adapted_homekit is enabled, do not setup cover entities
     if adapted_homekit == 1:
@@ -53,7 +54,7 @@ async def async_setup_entry(  # Changed to async_setup_entry
                 if auto_area == 1:
                     await device_registry_area_update(
                         floor_registry, area_registry, device_registry, entry, device)
-                cover = CleveroomCover(hass, device, client, gateway_id,auto_area)
+                cover = CleveroomCover(hass, device, client, gateway_id,auto_area,predictive_feedback)
                 covers.append(cover)
                 ENTITY_REGISTRY.setdefault(entry.entry_id, {})
                 ENTITY_REGISTRY[entry.entry_id][cover.unique_id] = cover
@@ -73,7 +74,7 @@ async def async_setup_entry(  # Changed to async_setup_entry
                             device_registry_area_update(
                                 floor_registry, area_registry, device_registry, entry, device),
                             hass.loop)
-                    cover = CleveroomCover(hass, device, client, gateway_id,auto_area)
+                    cover = CleveroomCover(hass, device, client, gateway_id,auto_area,predictive_feedback)
                     asyncio.run_coroutine_threadsafe(
                         async_add_entities_wrapper(hass, async_add_entities, [cover], False), hass.loop)
                     ENTITY_REGISTRY.setdefault(entry.entry_id, {})
@@ -92,8 +93,8 @@ async def async_setup_entry(  # Changed to async_setup_entry
 
 class CleveroomCover(KLWEntity,CoverEntity):
 
-    def __init__(self, hass, device, client, gateway_id, auto_area):
-        super().__init__(hass, device, client, gateway_id, auto_area)
+    def __init__(self, hass, device, client, gateway_id, auto_area,predictive_feedback):
+        super().__init__(hass, device, client, gateway_id, auto_area,predictive_feedback)
 
         self.entity_id = f"cover.{self._object_id}"
 
@@ -109,7 +110,7 @@ class CleveroomCover(KLWEntity,CoverEntity):
             self._attr_supported_features = (
                 CoverEntityFeature.OPEN
                 | CoverEntityFeature.CLOSE
-                # | CoverEntityFeature.SET_POSITION
+                | CoverEntityFeature.SET_POSITION
                 | CoverEntityFeature.STOP
             )
         else:
@@ -144,6 +145,8 @@ class CleveroomCover(KLWEntity,CoverEntity):
         self._client.controller.control("ShadeOpen", [{"oid": self._oid}])
         self._scale = 10
         self._current_cover_position = 100
+        self._is_on = True
+        self.set_device_detail_field("on", True)
         self.async_write_ha_state()
 
     async def async_close_cover(self, **kwargs):
@@ -151,6 +154,13 @@ class CleveroomCover(KLWEntity,CoverEntity):
         self._client.controller.control("ShadeClose", [{"oid": self._oid}])
         self._scale = 0
         self._current_cover_position = 0
+        self._is_on = False
+        self.set_device_detail_field("on", False)
+        self.async_write_ha_state()
+
+    async def async_stop_cover(self, **kwargs):
+        _LOGGER.debug(f"stop cover: {self._oid}")
+        self._client.controller.control("ShadePause", [{"oid": self._oid}])
         self.async_write_ha_state()
 
     async def async_set_cover_position(self, **kwargs):
@@ -161,13 +171,8 @@ class CleveroomCover(KLWEntity,CoverEntity):
             scale = int(position / 10)
             self._scale = scale
             self._current_cover_position = position
+            self.set_device_detail_field("scale", scale)
             self.async_write_ha_state()
-
-    async def async_stop_cover(self, **kwargs):
-        _LOGGER.debug(f"stop cover: {self._oid}")
-        self._client.controller.control("ShadePause", [{"oid": self._oid}])
-        self.async_write_ha_state()
-
 
     @property
     def current_cover_position(self):

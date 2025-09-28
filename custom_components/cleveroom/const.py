@@ -6,6 +6,7 @@ CONF_DISCOVERED_DEVICES = "discovered_devices"
 CONF_SYSTEM_LEVEL = "system_level"
 CONF_AUTO_CREATE_AREA = "auto_create_area"
 CONF_ADAPTATION_HOMEKIT = "adaptation_homekit"
+CONF_PREDICTIVE_FEEDBACK = "predictive_feedback"
 CONF_SECURE_CODE = "secure_code"
 # gateway.py work mode
 GATEWAY_TYPE_SERVER = 0
