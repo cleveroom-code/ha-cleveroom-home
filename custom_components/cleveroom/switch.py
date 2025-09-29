@@ -63,8 +63,12 @@ async def async_setup_entry(
 
     def async_device_discovered(device, is_new):
         if is_new:
+            cover_to_switch = False
+            if adapted_homekit == 1 and is_cover(device):
+                _LOGGER.debug("adapted_homekit is enabled, cover will be treated as switch")
+                cover_to_switch = True
             try:
-                if is_switch(device):
+                if is_switch(device)or cover_to_switch:
                     _LOGGER.info(f"add switch new devices: {device['oid']}")
                     if auto_area == 1:
                         asyncio.run_coroutine_threadsafe(
