@@ -32,8 +32,7 @@ class KLWBroadcast(metaclass=Singleton):
         return list(self.devices.values())
 
     def _get_hex(self, num: int) -> str:
-        hex_str = format(num, '02X')
-        return hex_str if num >= 16 else f"0{hex_str}"
+        return '{:02X}'.format(num)
 
     def get_udp_info(self, buf: bytes, rinfo: tuple) -> dict:
 
