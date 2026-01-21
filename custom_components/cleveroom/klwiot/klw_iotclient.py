@@ -754,12 +754,17 @@ class KLWIOTClient(KLWEventEmitter):
 
         return False
 
-    def is_live_dev(self, device: int) -> bool:
-        """Determine if it is a valid device."""
-        return (0 <= device <= 33) or (device == 41) \
-            or (61 <= device <= 119) \
-            or (191 <= device <= 194) \
-            or (201 <= device <= 254)
+    def is_live_dev(self,device: int) -> bool:
+        """Determine if it is a valid device according to the Node.js logic."""
+        return (
+                (0 < device <= 33)
+                or (device == 41)
+                or (51 <= device <= 59)
+                or (61 <= device <= 127)
+                or (144 <= device <= 166)
+                or (191 <= device <= 194)
+                or (201 <= device <= 254)
+        )
 
     def is_valid_scene(self, scene: int) -> bool:
         """Determine if it is a valid scene."""
@@ -770,7 +775,7 @@ class KLWIOTClient(KLWEventEmitter):
 
     def is_valid_room(self, room_id: int) -> bool:
         """Determine if it is a valid room."""
-        return (0 <= room_id <= 34) or (41 <= room_id <= 155)
+        return 0 <= room_id <= 239
 
     def is_valid_floor(self, floor: int) -> bool:
         """Determine if it is a valid floor."""

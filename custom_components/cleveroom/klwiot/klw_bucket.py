@@ -123,19 +123,39 @@ class DeviceBucket:
         if self._bucket_data_manager:
             await self._bucket_data_manager.async_save_data(self._bucket)
 
-    def is_toggle_light(self, d5: int) -> bool:
-        if d5 in [17, 24, 25]:
+    def is_toggle_light(self,d5: int) -> bool:
+        """
+        判断设备ID是否为可切换的灯具类型
+        Check if device ID is a toggle light type
+
+        Args:
+            d5: 设备ID (Device ID)
+
+        Returns:
+            bool: 是否为灯具 (Whether it is a light)
+        """
+        # 单个灯具类型 (Individual light types)
+        if d5 in [17, 24, 25, 59]:
             return True
+
+        # 灯具类型范围 (Light type ranges)
         if 30 <= d5 <= 33:
             return True
         if 61 <= d5 <= 80:
             return True
         if 90 <= d5 <= 98:
             return True
+        if 120 <= d5 <= 126:
+            return True
+        if 150 <= d5 <= 154:
+            return True
+        if 160 <= d5 <= 166:
+            return True
         if 201 <= d5 <= 227:
             return True
         if 239 <= d5 <= 241:
             return True
+
         return False
 
     def create_object_detail(self, ds_id: str, inst: List[int], buffer_type: int, uid: str):

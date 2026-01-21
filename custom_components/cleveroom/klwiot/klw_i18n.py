@@ -183,6 +183,12 @@ meta_strings = {
             {"id": 32, "name": "Exhibition Hall"},
             {"id": 33, "name": "Swimming Pool"},
             {"id": 34, "name": "Sports Field"},
+            {"id": 35, "name": "Chinese Kitchen"},
+            {"id": 36, "name": "Western Kitchen"},
+            {"id": 37, "name": "Closet 1"},
+            {"id": 38, "name": "Closet 2"},
+            {"id": 39, "name": "KTV Room"},
+            {"id": 40, "name": "Dance Studio"},
             {"id": 101, "name": "Secondary Bedroom"},
             {"id": 102, "name": "Bedroom 3"},
             {"id": 103, "name": "Hallway"},
@@ -238,6 +244,88 @@ meta_strings = {
             {"id": 153, "name": "Laundry Room"},
             {"id": 154, "name": "Wash Area"},
             {"id": 155, "name": "Pet Room"},
+            {"id": 156, "name": "Son's Room"},
+            {"id": 157, "name": "Daughter's Room"},
+            {"id": 158, "name": "Men's Bathroom"},
+            {"id": 159, "name": "Women's Bathroom"},
+            {"id": 160, "name": "Front Door"},
+            {"id": 161, "name": "Back Door"},
+            {"id": 162, "name": "Security Room 1"},
+            {"id": 163, "name": "Duty Room"},
+            {"id": 164, "name": "Driver's Room"},
+            {"id": 165, "name": "Executive Office"},
+            {"id": 166, "name": "Executive Office 1"},
+            {"id": 167, "name": "Executive Office 2"},
+            {"id": 168, "name": "Executive Office 3"},
+            {"id": 169, "name": "Office 1"},
+            {"id": 170, "name": "Office 2"},
+            {"id": 171, "name": "Office 3"},
+            {"id": 172, "name": "R&D Office"},
+            {"id": 173, "name": "R&D Office 1"},
+            {"id": 174, "name": "Design Office"},
+            {"id": 175, "name": "Design Office 1"},
+            {"id": 176, "name": "Technical Office"},
+            {"id": 177, "name": "Technical Office 1"},
+            {"id": 178, "name": "Marketing Office"},
+            {"id": 179, "name": "Marketing Office 1"},
+            {"id": 180, "name": "Finance Office"},
+            {"id": 181, "name": "Finance Office 1"},
+            {"id": 182, "name": "Publicity Office"},
+            {"id": 183, "name": "Production Workshop"},
+            {"id": 184, "name": "Production Workshop 1"},
+            {"id": 185, "name": "Production Workshop 2"},
+            {"id": 186, "name": "Aging Room"},
+            {"id": 187, "name": "Aging Room 1"},
+            {"id": 188, "name": "Aging Room 2"},
+            {"id": 189, "name": "Inspection Area"},
+            {"id": 190, "name": "Inspection Area 1"},
+            {"id": 191, "name": "Assembly Area"},
+            {"id": 192, "name": "Assembly Area 1"},
+            {"id": 193, "name": "Warehouse 1"},
+            {"id": 194, "name": "Warehouse 2"},
+            {"id": 195, "name": "Warehouse 3"},
+            {"id": 196, "name": "Vice President's Office 1"},
+            {"id": 197, "name": "Vice President's Office 2"},
+            {"id": 198, "name": "Guest Room 1"},
+            {"id": 201, "name": "Business Hall"},
+            {"id": 202, "name": "Comprehensive Service Hall"},
+            {"id": 203, "name": "Cash Area"},
+            {"id": 204, "name": "Centralized Office"},
+            {"id": 205, "name": "Negotiation Room"},
+            {"id": 206, "name": "Negotiation Room 1"},
+            {"id": 207, "name": "Negotiation Room 2"},
+            {"id": 208, "name": "Double Recording Room"},
+            {"id": 209, "name": "Consumer Protection Room"},
+            {"id": 210, "name": "Party Building Activity Room"},
+            {"id": 211, "name": "Wealth Management"},
+            {"id": 212, "name": "Wealth Management 1"},
+            {"id": 213, "name": "Wealth Management 2"},
+            {"id": 214, "name": "VIP Client Department"},
+            {"id": 215, "name": "General Department"},
+            {"id": 216, "name": "Warehouse"},
+            {"id": 217, "name": "Manager's Office"},
+            {"id": 218, "name": "Manager's Office 1"},
+            {"id": 219, "name": "Manager's Office 2"},
+            {"id": 220, "name": "Manager's Office 3"},
+            {"id": 221, "name": "Manager's Office 4"},
+            {"id": 222, "name": "Manager's Office 5"},
+            {"id": 223, "name": "Meeting Room 1"},
+            {"id": 224, "name": "Meeting Room 2"},
+            {"id": 225, "name": "Printing Room"},
+            {"id": 226, "name": "Document Room"},
+            {"id": 227, "name": "Reference Room"},
+            {"id": 228, "name": "Reference Room 1"},
+            {"id": 229, "name": "Reference Room 2"},
+            {"id": 230, "name": "Reference Room 3"},
+            {"id": 231, "name": "Equipment Room"},
+            {"id": 232, "name": "Cash Loading Room"},
+            {"id": 233, "name": "Corridor 1"},
+            {"id": 234, "name": "Corridor 2"},
+            {"id": 235, "name": "Corridor 3"},
+            {"id": 236, "name": "Cash Area Bathroom"},
+            {"id": 237, "name": "Collateral Storage"},
+            {"id": 238, "name": "Smart Service Area"},
+            {"id": 239, "name": "Salon Area"},
             {"id": 41, "name": "Room 1"},
             {"id": 42, "name": "Room 2"},
             {"id": 43, "name": "Room 3"},
@@ -266,7 +354,37 @@ meta_strings = {
             {"id": 66, "name": "Room 26"},
             {"id": 67, "name": "Room 27"},
             {"id": 68, "name": "Room 28"},
-            {"id": 69, "name": "Room 29"}
+            {"id": 69, "name": "Room 29"},
+            {"id": 71, "name": "Room 31"},
+            {"id": 72, "name": "Room 32"},
+            {"id": 73, "name": "Room 33"},
+            {"id": 74, "name": "Room 34"},
+            {"id": 75, "name": "Room 35"},
+            {"id": 76, "name": "Room 36"},
+            {"id": 77, "name": "Room 37"},
+            {"id": 78, "name": "Room 38"},
+            {"id": 79, "name": "Room 39"},
+            {"id": 80, "name": "Room 40"},
+            {"id": 81, "name": "Room 41"},
+            {"id": 82, "name": "Room 42"},
+            {"id": 83, "name": "Room 43"},
+            {"id": 84, "name": "Room 44"},
+            {"id": 85, "name": "Room 45"},
+            {"id": 86, "name": "Room 46"},
+            {"id": 87, "name": "Room 47"},
+            {"id": 88, "name": "Room 48"},
+            {"id": 89, "name": "Room 49"},
+            {"id": 90, "name": "Room 50"},
+            {"id": 91, "name": "Room 51"},
+            {"id": 92, "name": "Room 52"},
+            {"id": 93, "name": "Room 53"},
+            {"id": 94, "name": "Room 54"},
+            {"id": 95, "name": "Room 55"},
+            {"id": 96, "name": "Room 56"},
+            {"id": 97, "name": "Room 57"},
+            {"id": 98, "name": "Room 58"},
+            {"id": 99, "name": "Room 59"},
+            {"id": 100, "name": "Room 60"}
         ],
         "devices": [
             {"id": 1, "name": "TV"},
@@ -359,6 +477,30 @@ meta_strings = {
             {"id": 117, "name": "Lifting Frame"},
             {"id": 118, "name": "Roller Shutter"},
             {"id": 119, "name": "Garage Door"},
+            {"id": 120, "name": "Grid Lamp"},
+            {"id": 121, "name": "Street Lamp"},
+            {"id": 124, "name": "Lantern"},
+            {"id": 125, "name": "Tree Spotlight"},
+            {"id": 126, "name": "Pool Light"},
+            {"id": 127, "name": "Fountain"},
+            {"id": 144, "name": "Siren"},
+            {"id": 145, "name": "Booster Pump"},
+            {"id": 146, "name": "Circulation Pump"},
+            {"id": 147, "name": "Generator"},
+            {"id": 148, "name": "Vacuum Cleaner"},
+            {"id": 149, "name": "Robot"},
+            {"id": 150, "name": "Star Light"},
+            {"id": 151, "name": "Linear Light"},
+            {"id": 152, "name": "Step Light"},
+            {"id": 153, "name": "Magnetic Light"},
+            {"id": 154, "name": "Bed End Light"},
+            {"id": 160, "name": "Return Light"},
+            {"id": 161, "name": "Background Light 1"},
+            {"id": 162, "name": "Background Light 2"},
+            {"id": 163, "name": "Wash Curtain Light"},
+            {"id": 164, "name": "Wall Washer"},
+            {"id": 165, "name": "Landscape Light"},
+            {"id": 166, "name": "Sun Light"},
             {"id": 191, "name": "Air Conditioner 1"},
             {"id": 192, "name": "Air Conditioner 2"},
             {"id": 193, "name": "Clothes Dryer"},
@@ -415,7 +557,16 @@ meta_strings = {
             {"id": 250, "name": "Video Matrix"},
             {"id": 251, "name": "Game Console"},
             {"id": 252, "name": "AV Central Control"},
-            {"id": 253, "name": "Hard Disk Player"}
+            {"id": 253, "name": "Hard Disk Player"},
+            {"id": 51, "name": "Smart Circuit Breaker 1"},
+            {"id": 52, "name": "Smart Circuit Breaker 2"},
+            {"id": 53, "name": "Smart Circuit Breaker 3"},
+            {"id": 54, "name": "Smart Circuit Breaker 4"},
+            {"id": 55, "name": "Smart Circuit Breaker 5"},
+            {"id": 56, "name": "Smart Circuit Breaker 6"},
+            {"id": 57, "name": "Smart Circuit Breaker 7"},
+            {"id": 58, "name": "Smart Circuit Breaker 8"},
+            {"id": 59, "name": "Cabinet Lamp"}
         ],
         "scenes": [
             {"id": 129, "name": "Vacation"},
@@ -944,6 +1095,12 @@ meta_strings = {
             {"id": 32, "name": "展厅"},
             {"id": 33, "name": "游泳池"},
             {"id": 34, "name": "运动场"},
+            {"id": 35, "name": "中厨"},
+            {"id": 36, "name": "西厨"},
+            {"id": 37, "name": "衣帽间1"},
+            {"id": 38, "name": "衣帽间2"},
+            {"id": 39, "name": "KTV房"},
+            {"id": 40, "name": "舞蹈室"},
             {"id": 101, "name": "次卧"},
             {"id": 102, "name": "卧室三"},
             {"id": 103, "name": "走廊"},
@@ -999,6 +1156,88 @@ meta_strings = {
             {"id": 153, "name": "洗衣间"},
             {"id": 154, "name": "洗漱区"},
             {"id": 155, "name": "宠物间"},
+            {"id": 156, "name": "儿子房"},
+            {"id": 157, "name": "女儿房"},
+            {"id": 158, "name": "男卫生间"},
+            {"id": 159, "name": "女卫生间"},
+            {"id": 160, "name": "前门"},
+            {"id": 161, "name": "后门"},
+            {"id": 162, "name": "保卫室1"},
+            {"id": 163, "name": "值班室"},
+            {"id": 164, "name": "司机室"},
+            {"id": 165, "name": "领导室"},
+            {"id": 166, "name": "领导室1"},
+            {"id": 167, "name": "领导室2"},
+            {"id": 168, "name": "领导室3"},
+            {"id": 169, "name": "办公室1"},
+            {"id": 170, "name": "办公室2"},
+            {"id": 171, "name": "办公室3"},
+            {"id": 172, "name": "研发室"},
+            {"id": 173, "name": "研发室1"},
+            {"id": 174, "name": "设计室"},
+            {"id": 175, "name": "设计室1"},
+            {"id": 176, "name": "技术室"},
+            {"id": 177, "name": "技术室1"},
+            {"id": 178, "name": "营销室"},
+            {"id": 179, "name": "营销室1"},
+            {"id": 180, "name": "财务室"},
+            {"id": 181, "name": "财务室1"},
+            {"id": 182, "name": "文宣室"},
+            {"id": 183, "name": "生产车间"},
+            {"id": 184, "name": "生产车间1"},
+            {"id": 185, "name": "生产车间2"},
+            {"id": 186, "name": "老化室"},
+            {"id": 187, "name": "老化室1"},
+            {"id": 188, "name": "老化室2"},
+            {"id": 189, "name": "过检区"},
+            {"id": 190, "name": "过检区1"},
+            {"id": 191, "name": "组装区"},
+            {"id": 192, "name": "组装区1"},
+            {"id": 193, "name": "库房1"},
+            {"id": 194, "name": "库房2"},
+            {"id": 195, "name": "库房3"},
+            {"id": 196, "name": "副总室1"},
+            {"id": 197, "name": "副总室2"},
+            {"id": 198, "name": "客房1"},
+            {"id": 201, "name": "营业大厅"},
+            {"id": 202, "name": "综合服务厅"},
+            {"id": 203, "name": "现金区"},
+            {"id": 204, "name": "集中办公室"},
+            {"id": 205, "name": "洽谈室"},
+            {"id": 206, "name": "洽谈室1"},
+            {"id": 207, "name": "洽谈室2"},
+            {"id": 208, "name": "双录室"},
+            {"id": 209, "name": "消保室"},
+            {"id": 210, "name": "党建活动室"},
+            {"id": 211, "name": "财富管理"},
+            {"id": 212, "name": "财富管理1"},
+            {"id": 213, "name": "财富管理2"},
+            {"id": 214, "name": "大客户部"},
+            {"id": 215, "name": "综合部"},
+            {"id": 216, "name": "库房"},
+            {"id": 217, "name": "行长室"},
+            {"id": 218, "name": "行长室1"},
+            {"id": 219, "name": "行长室2"},
+            {"id": 220, "name": "行长室3"},
+            {"id": 221, "name": "行长室4"},
+            {"id": 222, "name": "行长室5"},
+            {"id": 223, "name": "会议室1"},
+            {"id": 224, "name": "会议室2"},
+            {"id": 225, "name": "文印室"},
+            {"id": 226, "name": "凭证室"},
+            {"id": 227, "name": "资料室"},
+            {"id": 228, "name": "资料室1"},
+            {"id": 229, "name": "资料室2"},
+            {"id": 230, "name": "资料室3"},
+            {"id": 231, "name": "设备间"},
+            {"id": 232, "name": "加钞间"},
+            {"id": 233, "name": "楼道1"},
+            {"id": 234, "name": "楼道2"},
+            {"id": 235, "name": "楼道3"},
+            {"id": 236, "name": "现金区卫生间"},
+            {"id": 237, "name": "抵押物库"},
+            {"id": 238, "name": "智能服务区"},
+            {"id": 239, "name": "沙龙区"},
             {"id": 41, "name": "房间1"},
             {"id": 42, "name": "房间2"},
             {"id": 43, "name": "房间3"},
@@ -1027,7 +1266,37 @@ meta_strings = {
             {"id": 66, "name": "房间26"},
             {"id": 67, "name": "房间27"},
             {"id": 68, "name": "房间28"},
-            {"id": 69, "name": "房间29"}
+            {"id": 69, "name": "房间29"},
+            {"id": 71, "name": "房间31"},
+            {"id": 72, "name": "房间32"},
+            {"id": 73, "name": "房间33"},
+            {"id": 74, "name": "房间34"},
+            {"id": 75, "name": "房间35"},
+            {"id": 76, "name": "房间36"},
+            {"id": 77, "name": "房间37"},
+            {"id": 78, "name": "房间38"},
+            {"id": 79, "name": "房间39"},
+            {"id": 80, "name": "房间40"},
+            {"id": 81, "name": "房间41"},
+            {"id": 82, "name": "房间42"},
+            {"id": 83, "name": "房间43"},
+            {"id": 84, "name": "房间44"},
+            {"id": 85, "name": "房间45"},
+            {"id": 86, "name": "房间46"},
+            {"id": 87, "name": "房间47"},
+            {"id": 88, "name": "房间48"},
+            {"id": 89, "name": "房间49"},
+            {"id": 90, "name": "房间50"},
+            {"id": 91, "name": "房间51"},
+            {"id": 92, "name": "房间52"},
+            {"id": 93, "name": "房间53"},
+            {"id": 94, "name": "房间54"},
+            {"id": 95, "name": "房间55"},
+            {"id": 96, "name": "房间56"},
+            {"id": 97, "name": "房间57"},
+            {"id": 98, "name": "房间58"},
+            {"id": 99, "name": "房间59"},
+            {"id": 100, "name": "房间60"}
         ],
         "devices": [
             {"id": 1, "name": "电视"},
@@ -1120,6 +1389,30 @@ meta_strings = {
             {"id": 117, "name": "升降架"},
             {"id": 118, "name": "卷匣门"},
             {"id": 119, "name": "车库门"},
+            {"id": 120, "name": "格栅灯"},
+            {"id": 121, "name": "路灯"},
+            {"id": 124, "name": "灯笼"},
+            {"id": 125, "name": "射树灯"},
+            {"id": 126, "name": "水池灯"},
+            {"id": 127, "name": "喷泉"},
+            {"id": 144, "name": "警笛"},
+            {"id": 145, "name": "增压泵"},
+            {"id": 146, "name": "循环泵"},
+            {"id": 147, "name": "发电机"},
+            {"id": 148, "name": "扫地机"},
+            {"id": 149, "name": "机器人"},
+            {"id": 150, "name": "星空灯"},
+            {"id": 151, "name": "线形灯"},
+            {"id": 152, "name": "踏步灯"},
+            {"id": 153, "name": "磁吸灯"},
+            {"id": 154, "name": "床尾灯"},
+            {"id": 160, "name": "回光灯"},
+            {"id": 161, "name": "背景灯1"},
+            {"id": 162, "name": "背景灯2"},
+            {"id": 163, "name": "洗帘灯"},
+            {"id": 164, "name": "洗墙灯"},
+            {"id": 165, "name": "景观灯"},
+            {"id": 166, "name": "太阳灯"},
             {"id": 191, "name": "空调1"},
             {"id": 192, "name": "空调2"},
             {"id": 193, "name": "晾衣架"},
@@ -1165,18 +1458,27 @@ meta_strings = {
             {"id": 239, "name": "日光灯1"},
             {"id": 240, "name": "日光灯2"},
             {"id": 241, "name": "日光灯3"},
-            {"id": 242, "name": "勿扰"},
-            {"id": 243, "name": "打扫"},
+            {"id": 242, "name": "请勿扰"},
+            {"id": 243, "name": "请打扫"},
             {"id": 244, "name": "入住灯"},
             {"id": 245, "name": "急救灯"},
-            {"id": 246, "name": "退房"},
-            {"id": 247, "name": "稍后"},
+            {"id": 246, "name": "请退房"},
+            {"id": 247, "name": "请稍后"},
             {"id": 248, "name": "蓝光播放器"},
             {"id": 249, "name": "网络机顶盒"},
             {"id": 250, "name": "视频矩阵"},
             {"id": 251, "name": "游戏机"},
             {"id": 252, "name": "影音中控主机"},
-            {"id": 253, "name": "硬盘播放机"}
+            {"id": 253, "name": "硬盘播放机"},
+            {"id": 51, "name": "智能空开1"},
+            {"id": 52, "name": "智能空开2"},
+            {"id": 53, "name": "智能空开3"},
+            {"id": 54, "name": "智能空开4"},
+            {"id": 55, "name": "智能空开5"},
+            {"id": 56, "name": "智能空开6"},
+            {"id": 57, "name": "智能空开7"},
+            {"id": 58, "name": "智能空开8"},
+            {"id": 59, "name": "柜灯"}
         ],
         "scenes": [
             {"id": 129, "name": "度假情景"},
@@ -1271,69 +1573,254 @@ meta_strings = {
             {"id": 197, "name": "燃气"}
         ],
         "dries": [
-            {"id": "198-11", "name": "PM2.5高报警"},
-            {"id": "98-11", "name": "PM2.5低报警"},
-            {"id": "198-12", "name": "PM10高报警"},
-            {"id": "98-12", "name": "PM10低报警"},
-            {"id": "198-13", "name": "氧气高报警"},
-            {"id": "98-13", "name": "氧气低报警"},
-            {"id": "198-14", "name": "二氧化碳高报警"},
-            {"id": "98-14", "name": "二氧化碳低报警"},
-            {"id": "198-15", "name": "一氧化碳高报警"},
-            {"id": "98-15", "name": "一氧化碳低报警"},
-            {"id": "198-16", "name": "甲醛高报警"},
-            {"id": "98-16", "name": "甲醛低报警"},
-            {"id": "198-17", "name": "噪音高报警"},
-            {"id": "98-17", "name": "噪音低报警"},
-            {"id": "198-18", "name": "综合环境指标高报警"},
-            {"id": "98-18", "name": "综合环境指标低报警"},
-            {"id": "198-1", "name": "温度高报警"},
-            {"id": "98-1", "name": "温度低报警"},
-            {"id": "198-2", "name": "湿度高报警"},
-            {"id": "98-2", "name": "湿度低报警"},
-            {"id": "198-3", "name": "湿度高报警"},
-            {"id": "98-3", "name": "湿度低报警"},
-            {"id": "198-4", "name": "压力高报警"},
-            {"id": "98-4", "name": "压力低报警"},
-            {"id": "198-5", "name": "液位高报警"},
-            {"id": "98-5", "name": "液位低报警"},
-            {"id": "198-6", "name": "电压高报警"},
-            {"id": "98-6", "name": "电压低报警"},
-            {"id": "198-7", "name": "电流高报警"},
-            {"id": "98-7", "name": "电流低报警"},
-            {"id": "198-8", "name": "流量高报警"},
-            {"id": "98-8", "name": "流量低报警"},
-            {"id": "198-9", "name": "门铃报警"},
-            {"id": "98-9", "name": "窗户报警"},
-            {"id": "198-35", "name": "有功功率高报警"},
-            {"id": "98-35", "name": "有功功率低报警"},
-            {"id": "198-36", "name": "无功功率高报警"},
-            {"id": "98-36", "name": "无功功率低报警"},
-            {"id": "198-37", "name": "漏电电流高报警"},
-            {"id": "98-37", "name": "漏电电流低报警"},
-            {"id": "198-38", "name": "功率因素高报警"},
-            {"id": "98-38", "name": "功率因素低报警"},
-
-            {"id": "98-101", "name": "1#二元传感器"},
-            {"id": "98-102", "name": "2#二元传感器"},
-            {"id": "98-103", "name": "3#二元传感器"},
-            {"id": "98-104", "name": "4#二元传感器"},
-            {"id": "98-105", "name": "5#二元传感器"},
-            {"id": "98-106", "name": "6#二元传感器"},
-            {"id": "98-107", "name": "7#二元传感器"},
-            {"id": "98-108", "name": "8#二元传感器"},
-            {"id": "98-109", "name": "9#二元传感器"},
-            {"id": "98-110", "name": "10#二元传感器"},
-            {"id": "98-111", "name": "11#二元传感器"},
-            {"id": "98-112", "name": "12#二元传感器"},
-            {"id": "98-113", "name": "13#二元传感器"},
-            {"id": "98-114", "name": "14#二元传感器"},
-            {"id": "98-115", "name": "15#二元传感器"},
-            {"id": "98-116", "name": "16#二元传感器"},
-            {"id": "98-117", "name": "17#二元传感器"},
-            {"id": "98-118", "name": "18#二元传感器"},
-            {"id": "98-119", "name": "19#二元传感器"},
-            {"id": "98-120", "name": "20#二元传感器"},
+            {
+                "id": "198-11",
+                "name": "PM2.5高报警"
+            },
+            {
+                "id": "98-11",
+                "name": "PM2.5低报警"
+            },
+            {
+                "id": "198-12",
+                "name": "PM10高报警"
+            },
+            {
+                "id": "98-12",
+                "name": "PM10低报警"
+            },
+            {
+                "id": "198-13",
+                "name": "氧气高报警"
+            },
+            {
+                "id": "98-13",
+                "name": "氧气低报警"
+            },
+            {
+                "id": "198-14",
+                "name": "二氧化碳高报警"
+            },
+            {
+                "id": "98-14",
+                "name": "二氧化碳低报警"
+            },
+            {
+                "id": "198-15",
+                "name": "一氧化碳高报警"
+            },
+            {
+                "id": "98-15",
+                "name": "一氧化碳低报警"
+            },
+            {
+                "id": "198-16",
+                "name": "甲醛高报警"
+            },
+            {
+                "id": "98-16",
+                "name": "甲醛低报警"
+            },
+            {
+                "id": "198-17",
+                "name": "噪音高报警"
+            },
+            {
+                "id": "98-17",
+                "name": "噪音低报警"
+            },
+            {
+                "id": "198-18",
+                "name": "综合环境指数高报警"
+            },
+            {
+                "id": "98-18",
+                "name": "综合环境指数低报警"
+            },
+            {
+                "id": "198-1",
+                "name": "温度高报警"
+            },
+            {
+                "id": "98-1",
+                "name": "温度低报警"
+            },
+            {
+                "id": "198-2",
+                "name": "湿度高报警"
+            },
+            {
+                "id": "98-2",
+                "name": "湿度低报警"
+            },
+            {
+                "id": "198-3",
+                "name": "湿度高报警"
+            },
+            {
+                "id": "98-3",
+                "name": "湿度低报警"
+            },
+            {
+                "id": "198-4",
+                "name": "压强高报警"
+            },
+            {
+                "id": "98-4",
+                "name": "压强低报警"
+            },
+            {
+                "id": "198-5",
+                "name": "液位高报警"
+            },
+            {
+                "id": "98-5",
+                "name": "液位低报警"
+            },
+            {
+                "id": "198-6",
+                "name": "电压高报警"
+            },
+            {
+                "id": "98-6",
+                "name": "电压低报警"
+            },
+            {
+                "id": "198-7",
+                "name": "电流高报警"
+            },
+            {
+                "id": "98-7",
+                "name": "电流低报警"
+            },
+            {
+                "id": "198-8",
+                "name": "流量高报警"
+            },
+            {
+                "id": "98-8",
+                "name": "流量低报警"
+            },
+            {
+                "id": "198-9",
+                "name": "门铃报警"
+            },
+            {
+                "id": "98-9",
+                "name": "窗报警"
+            },
+            {
+                "id": "198-35",
+                "name": "有功功率高报警"
+            },
+            {
+                "id": "98-35",
+                "name": "有功功率低报警"
+            },
+            {
+                "id": "198-36",
+                "name": "无功功率高报警"
+            },
+            {
+                "id": "98-36",
+                "name": "无功功率低报警"
+            },
+            {
+                "id": "198-37",
+                "name": "漏电流高报警"
+            },
+            {
+                "id": "98-37",
+                "name": "漏电流低报警"
+            },
+            {
+                "id": "198-38",
+                "name": "功率因数高报警"
+            },
+            {
+                "id": "98-38",
+                "name": "功率因数低报警"
+            },
+            {
+                "id": "98-101",
+                "name": "1#开关量"
+            },
+            {
+                "id": "98-102",
+                "name": "2#开关量"
+            },
+            {
+                "id": "98-103",
+                "name": "3#开关量"
+            },
+            {
+                "id": "98-104",
+                "name": "4#开关量"
+            },
+            {
+                "id": "98-105",
+                "name": "5#开关量"
+            },
+            {
+                "id": "98-106",
+                "name": "6#开关量"
+            },
+            {
+                "id": "98-107",
+                "name": "7#开关量"
+            },
+            {
+                "id": "98-108",
+                "name": "8#开关量"
+            },
+            {
+                "id": "98-109",
+                "name": "9#开关量"
+            },
+            {
+                "id": "98-110",
+                "name": "10#开关量"
+            },
+            {
+                "id": "98-111",
+                "name": "11#开关量"
+            },
+            {
+                "id": "98-112",
+                "name": "12#开关量"
+            },
+            {
+                "id": "98-113",
+                "name": "13#开关量"
+            },
+            {
+                "id": "98-114",
+                "name": "14#开关量"
+            },
+            {
+                "id": "98-115",
+                "name": "15#开关量"
+            },
+            {
+                "id": "98-116",
+                "name": "16#开关量"
+            },
+            {
+                "id": "98-117",
+                "name": "17#开关量"
+            },
+            {
+                "id": "98-118",
+                "name": "18#开关量"
+            },
+            {
+                "id": "98-119",
+                "name": "19#开关量"
+            },
+            {
+                "id": "98-120",
+                "name": "20#开关量"
+            }
         ]
     },
     "zh-Hant": {
@@ -1351,13 +1838,13 @@ meta_strings = {
             "ac_ctrl": {
                 "auto": "自動",
                 "manual": "手動",
-                "cool": "制冷",
-                "heat": "制熱",
+                "cool": "製冷",
+                "heat": "製熱",
                 "dry": "除濕",
                 "fan": "送風",
                 "low": "低風",
                 "mid": "中風",
-                "high": "高風"
+                "high": "高風",
             },
             "sensor_state": {
                 "door_sensor": "門磁",
@@ -1371,7 +1858,7 @@ meta_strings = {
                 "smoke": "有煙",
                 "smoke_clear": "無煙",
                 "gas": "有氣",
-                "gas_clear": "無氣"
+                "gas_clear": "無氣",
             }
         },
         "floors": [
@@ -1520,6 +2007,12 @@ meta_strings = {
             {"id": 32, "name": "展廳"},
             {"id": 33, "name": "游泳池"},
             {"id": 34, "name": "運動場"},
+            {"id": 35, "name": "中廚"},
+            {"id": 36, "name": "西廚"},
+            {"id": 37, "name": "衣帽間1"},
+            {"id": 38, "name": "衣帽間2"},
+            {"id": 39, "name": "KTV房"},
+            {"id": 40, "name": "舞蹈室"},
             {"id": 101, "name": "次臥"},
             {"id": 102, "name": "臥室三"},
             {"id": 103, "name": "走廊"},
@@ -1575,6 +2068,88 @@ meta_strings = {
             {"id": 153, "name": "洗衣間"},
             {"id": 154, "name": "洗漱區"},
             {"id": 155, "name": "寵物間"},
+            {"id": 156, "name": "兒子房"},
+            {"id": 157, "name": "女兒房"},
+            {"id": 158, "name": "男衛生間"},
+            {"id": 159, "name": "女衛生間"},
+            {"id": 160, "name": "前門"},
+            {"id": 161, "name": "後門"},
+            {"id": 162, "name": "保衛室1"},
+            {"id": 163, "name": "值班室"},
+            {"id": 164, "name": "司機室"},
+            {"id": 165, "name": "領導室"},
+            {"id": 166, "name": "領導室1"},
+            {"id": 167, "name": "領導室2"},
+            {"id": 168, "name": "領導室3"},
+            {"id": 169, "name": "辦公室1"},
+            {"id": 170, "name": "辦公室2"},
+            {"id": 171, "name": "辦公室3"},
+            {"id": 172, "name": "研發室"},
+            {"id": 173, "name": "研發室1"},
+            {"id": 174, "name": "設計室"},
+            {"id": 175, "name": "設計室1"},
+            {"id": 176, "name": "技術室"},
+            {"id": 177, "name": "技術室1"},
+            {"id": 178, "name": "營銷室"},
+            {"id": 179, "name": "營銷室1"},
+            {"id": 180, "name": "財務室"},
+            {"id": 181, "name": "財務室1"},
+            {"id": 182, "name": "文宣室"},
+            {"id": 183, "name": "生產車間"},
+            {"id": 184, "name": "生產車間1"},
+            {"id": 185, "name": "生產車間2"},
+            {"id": 186, "name": "老化室"},
+            {"id": 187, "name": "老化室1"},
+            {"id": 188, "name": "老化室2"},
+            {"id": 189, "name": "過檢區"},
+            {"id": 190, "name": "過檢區1"},
+            {"id": 191, "name": "組裝區"},
+            {"id": 192, "name": "組裝區1"},
+            {"id": 193, "name": "庫房1"},
+            {"id": 194, "name": "庫房2"},
+            {"id": 195, "name": "庫房3"},
+            {"id": 196, "name": "副總室1"},
+            {"id": 197, "name": "副總室2"},
+            {"id": 198, "name": "客房1"},
+            {"id": 201, "name": "營業大廳"},
+            {"id": 202, "name": "綜合服務廳"},
+            {"id": 203, "name": "現金區"},
+            {"id": 204, "name": "集中辦公室"},
+            {"id": 205, "name": "洽談室"},
+            {"id": 206, "name": "洽談室1"},
+            {"id": 207, "name": "洽談室2"},
+            {"id": 208, "name": "雙錄室"},
+            {"id": 209, "name": "消保室"},
+            {"id": 210, "name": "黨建活動室"},
+            {"id": 211, "name": "財富管理"},
+            {"id": 212, "name": "財富管理1"},
+            {"id": 213, "name": "財富管理2"},
+            {"id": 214, "name": "大客戶部"},
+            {"id": 215, "name": "綜合部"},
+            {"id": 216, "name": "庫房"},
+            {"id": 217, "name": "行長室"},
+            {"id": 218, "name": "行長室1"},
+            {"id": 219, "name": "行長室2"},
+            {"id": 220, "name": "行長室3"},
+            {"id": 221, "name": "行長室4"},
+            {"id": 222, "name": "行長室5"},
+            {"id": 223, "name": "會議室1"},
+            {"id": 224, "name": "會議室2"},
+            {"id": 225, "name": "文印室"},
+            {"id": 226, "name": "憑證室"},
+            {"id": 227, "name": "資料室"},
+            {"id": 228, "name": "資料室1"},
+            {"id": 229, "name": "資料室2"},
+            {"id": 230, "name": "資料室3"},
+            {"id": 231, "name": "設備間"},
+            {"id": 232, "name": "加鈔間"},
+            {"id": 233, "name": "樓道1"},
+            {"id": 234, "name": "樓道2"},
+            {"id": 235, "name": "樓道3"},
+            {"id": 236, "name": "現金區衛生間"},
+            {"id": 237, "name": "抵押物庫"},
+            {"id": 238, "name": "智能服務區"},
+            {"id": 239, "name": "沙龍區"},
             {"id": 41, "name": "房間1"},
             {"id": 42, "name": "房間2"},
             {"id": 43, "name": "房間3"},
@@ -1603,7 +2178,37 @@ meta_strings = {
             {"id": 66, "name": "房間26"},
             {"id": 67, "name": "房間27"},
             {"id": 68, "name": "房間28"},
-            {"id": 69, "name": "房間29"}
+            {"id": 69, "name": "房間29"},
+            {"id": 71, "name": "房間31"},
+            {"id": 72, "name": "房間32"},
+            {"id": 73, "name": "房間33"},
+            {"id": 74, "name": "房間34"},
+            {"id": 75, "name": "房間35"},
+            {"id": 76, "name": "房間36"},
+            {"id": 77, "name": "房間37"},
+            {"id": 78, "name": "房間38"},
+            {"id": 79, "name": "房間39"},
+            {"id": 80, "name": "房間40"},
+            {"id": 81, "name": "房間41"},
+            {"id": 82, "name": "房間42"},
+            {"id": 83, "name": "房間43"},
+            {"id": 84, "name": "房間44"},
+            {"id": 85, "name": "房間45"},
+            {"id": 86, "name": "房間46"},
+            {"id": 87, "name": "房間47"},
+            {"id": 88, "name": "房間48"},
+            {"id": 89, "name": "房間49"},
+            {"id": 90, "name": "房間50"},
+            {"id": 91, "name": "房間51"},
+            {"id": 92, "name": "房間52"},
+            {"id": 93, "name": "房間53"},
+            {"id": 94, "name": "房間54"},
+            {"id": 95, "name": "房間55"},
+            {"id": 96, "name": "房間56"},
+            {"id": 97, "name": "房間57"},
+            {"id": 98, "name": "房間58"},
+            {"id": 99, "name": "房間59"},
+            {"id": 100, "name": "房間60"}
         ],
         "devices": [
             {"id": 1, "name": "電視"},
@@ -1626,7 +2231,7 @@ meta_strings = {
             {"id": 19, "name": "功放"},
             {"id": 20, "name": "新風設備"},
             {"id": 21, "name": "自定義"},
-            {"id": 22, "name": "餵魚器"},
+            {"id": 22, "name": "喂魚器"},
             {"id": 23, "name": "噴淋器"},
             {"id": 24, "name": "地燈"},
             {"id": 25, "name": "電燈"},
@@ -1637,7 +2242,7 @@ meta_strings = {
             {"id": 30, "name": "燈光場景"},
             {"id": 31, "name": "壁燈"},
             {"id": 32, "name": "頂燈"},
-            {"id": 33, "name": "台燈"},
+            {"id": 33, "name": "檯燈"},
             {"id": 90, "name": "左床燈"},
             {"id": 91, "name": "右床燈"},
             {"id": 92, "name": "浴室燈"},
@@ -1696,6 +2301,30 @@ meta_strings = {
             {"id": 117, "name": "升降架"},
             {"id": 118, "name": "卷匣門"},
             {"id": 119, "name": "車庫門"},
+            {"id": 120, "name": "格柵燈"},
+            {"id": 121, "name": "路燈"},
+            {"id": 124, "name": "燈籠"},
+            {"id": 125, "name": "射樹燈"},
+            {"id": 126, "name": "水池燈"},
+            {"id": 127, "name": "噴泉"},
+            {"id": 144, "name": "警笛"},
+            {"id": 145, "name": "增壓泵"},
+            {"id": 146, "name": "循環泵"},
+            {"id": 147, "name": "發電機"},
+            {"id": 148, "name": "掃地機"},
+            {"id": 149, "name": "機器人"},
+            {"id": 150, "name": "星空燈"},
+            {"id": 151, "name": "線形燈"},
+            {"id": 152, "name": "踏步燈"},
+            {"id": 153, "name": "磁吸燈"},
+            {"id": 154, "name": "床尾燈"},
+            {"id": 160, "name": "回光燈"},
+            {"id": 161, "name": "背景燈1"},
+            {"id": 162, "name": "背景燈2"},
+            {"id": 163, "name": "洗簾燈"},
+            {"id": 164, "name": "洗牆燈"},
+            {"id": 165, "name": "景觀燈"},
+            {"id": 166, "name": "太陽燈"},
             {"id": 191, "name": "空調1"},
             {"id": 192, "name": "空調2"},
             {"id": 193, "name": "晾衣架"},
@@ -1752,7 +2381,16 @@ meta_strings = {
             {"id": 250, "name": "視頻矩陣"},
             {"id": 251, "name": "遊戲機"},
             {"id": 252, "name": "影音中控主機"},
-            {"id": 253, "name": "硬盤播放機"}
+            {"id": 253, "name": "硬盤播放機"},
+            {"id": 51, "name": "智能空開1"},
+            {"id": 52, "name": "智能空開2"},
+            {"id": 53, "name": "智能空開3"},
+            {"id": 54, "name": "智能空開4"},
+            {"id": 55, "name": "智能空開5"},
+            {"id": 56, "name": "智能空開6"},
+            {"id": 57, "name": "智能空開7"},
+            {"id": 58, "name": "智能空開8"},
+            {"id": 59, "name": "櫃燈"}
         ],
         "scenes": [
             {"id": 129, "name": "度假情景"},
@@ -1849,256 +2487,255 @@ meta_strings = {
         "dries": [
             {
                 "id": "198-11",
-                "name": "PM2.5高警報"
+                "name": "PM2.5高報警"
             },
             {
                 "id": "98-11",
-                "name": "PM2.5低警報"
+                "name": "PM2.5低報警"
             },
             {
                 "id": "198-12",
-                "name": "PM10高警報"
+                "name": "PM10高報警"
             },
             {
                 "id": "98-12",
-                "name": "PM10低警報"
+                "name": "PM10低報警"
             },
             {
                 "id": "198-13",
-                "name": "氧氣高警報"
+                "name": "氧氣高報警"
             },
             {
                 "id": "98-13",
-                "name": "氧氣低警報"
+                "name": "氧氣低報警"
             },
             {
                 "id": "198-14",
-                "name": "二氧化碳高警報"
+                "name": "二氧化碳高報警"
             },
             {
                 "id": "98-14",
-                "name": "二氧化碳低警報"
+                "name": "二氧化碳低報警"
             },
             {
                 "id": "198-15",
-                "name": "一氧化碳高警報"
+                "name": "一氧化碳高報警"
             },
             {
                 "id": "98-15",
-                "name": "一氧化碳低警報"
+                "name": "一氧化碳低報警"
             },
             {
                 "id": "198-16",
-                "name": "甲醛高警報"
+                "name": "甲醛高報警"
             },
             {
                 "id": "98-16",
-                "name": "甲醛低警報"
+                "name": "甲醛低報警"
             },
             {
                 "id": "198-17",
-                "name": "噪音高警報"
+                "name": "噪音高報警"
             },
             {
                 "id": "98-17",
-                "name": "噪音低警報"
+                "name": "噪音低報警"
             },
             {
                 "id": "198-18",
-                "name": "綜合環境指標高警報"
+                "name": "綜合環境指數高報警"
             },
             {
                 "id": "98-18",
-                "name": "綜合環境指標低警報"
+                "name": "綜合環境指數低報警"
             },
             {
                 "id": "198-1",
-                "name": "溫度高警報"
+                "name": "溫度高報警"
             },
             {
                 "id": "98-1",
-                "name": "溫度低警報"
+                "name": "溫度低報警"
             },
             {
                 "id": "198-2",
-                "name": "濕度高警報"
+                "name": "濕度高報警"
             },
             {
                 "id": "98-2",
-                "name": "濕度低警報"
+                "name": "濕度低報警"
             },
             {
                 "id": "198-3",
-                "name": "濕度高警報"
+                "name": "濕度高報警"
             },
             {
                 "id": "98-3",
-                "name": "濕度低警報"
+                "name": "濕度低報警"
             },
             {
                 "id": "198-4",
-                "name": "壓力高警報"
+                "name": "壓強高報警"
             },
             {
                 "id": "98-4",
-                "name": "壓力低警報"
+                "name": "壓強低報警"
             },
             {
                 "id": "198-5",
-                "name": "液位高警報"
+                "name": "液位高報警"
             },
             {
                 "id": "98-5",
-                "name": "液位低警報"
+                "name": "液位低報警"
             },
             {
                 "id": "198-6",
-                "name": "電壓高警報"
+                "name": "電壓高報警"
             },
             {
                 "id": "98-6",
-                "name": "電壓低警報"
+                "name": "電壓低報警"
             },
             {
                 "id": "198-7",
-                "name": "電流高警報"
+                "name": "電流高報警"
             },
             {
                 "id": "98-7",
-                "name": "電流低警報"
+                "name": "電流低報警"
             },
             {
                 "id": "198-8",
-                "name": "流量高警報"
+                "name": "流量高報警"
             },
             {
                 "id": "98-8",
-                "name": "流量低警報"
+                "name": "流量低報警"
             },
             {
                 "id": "198-9",
-                "name": "門鈴警報"
+                "name": "門鈴報警"
             },
             {
                 "id": "98-9",
-                "name": "窗戶警報"
+                "name": "窗報警"
             },
             {
                 "id": "198-35",
-                "name": "有功功率高警報"
+                "name": "有功功率高報警"
             },
             {
                 "id": "98-35",
-                "name": "有功功率低警報"
+                "name": "有功功率低報警"
             },
             {
                 "id": "198-36",
-                "name": "無功功率高警報"
+                "name": "無功功率高報警"
             },
             {
                 "id": "98-36",
-                "name": "無功功率低警報"
+                "name": "無功功率低報警"
             },
             {
                 "id": "198-37",
-                "name": "漏電電流高警報"
+                "name": "漏電流高報警"
             },
             {
                 "id": "98-37",
-                "name": "漏電電流低警報"
+                "name": "漏電流低報警"
             },
             {
                 "id": "198-38",
-                "name": "功率因素高警報"
+                "name": "功率因數高報警"
             },
             {
                 "id": "98-38",
-                "name": "功率因素低警報"
+                "name": "功率因數低報警"
             },
             {
                 "id": "98-101",
-                "name": "1#二元感測器"
+                "name": "1#開關量"
             },
             {
                 "id": "98-102",
-                "name": "2#二元感測器"
+                "name": "2#開關量"
             },
             {
                 "id": "98-103",
-                "name": "3#二元感測器"
+                "name": "3#開關量"
             },
             {
                 "id": "98-104",
-                "name": "4#二元感測器"
+                "name": "4#開關量"
             },
             {
                 "id": "98-105",
-                "name": "5#二元感測器"
+                "name": "5#開關量"
             },
             {
                 "id": "98-106",
-                "name": "6#二元感測器"
+                "name": "6#開關量"
             },
             {
                 "id": "98-107",
-                "name": "7#二元感測器"
+                "name": "7#開關量"
             },
             {
                 "id": "98-108",
-                "name": "8#二元感測器"
+                "name": "8#開關量"
             },
             {
                 "id": "98-109",
-                "name": "9#二元感測器"
+                "name": "9#開關量"
             },
             {
                 "id": "98-110",
-                "name": "10#二元感測器"
+                "name": "10#開關量"
             },
             {
                 "id": "98-111",
-                "name": "11#二元感測器"
+                "name": "11#開關量"
             },
             {
                 "id": "98-112",
-                "name": "12#二元感測器"
+                "name": "12#開關量"
             },
             {
                 "id": "98-113",
-                "name": "13#二元感測器"
+                "name": "13#開關量"
             },
             {
                 "id": "98-114",
-                "name": "14#二元感測器"
+                "name": "14#開關量"
             },
             {
                 "id": "98-115",
-                "name": "15#二元感測器"
+                "name": "15#開關量"
             },
             {
                 "id": "98-116",
-                "name": "16#二元感測器"
+                "name": "16#開關量"
             },
             {
                 "id": "98-117",
-                "name": "17#二元感測器"
+                "name": "17#開關量"
             },
             {
                 "id": "98-118",
-                "name": "18#二元感測器"
+                "name": "18#開關量"
             },
             {
                 "id": "98-119",
-                "name": "19#二元感測器"
+                "name": "19#開關量"
             },
             {
                 "id": "98-120",
-                "name": "20#二元感測器"
+                "name": "20#開關量"
             }
         ]
     }
 }
-
 
 def get_meta_string(key: str, language: str = "zh-Hans") -> str:
     return meta_strings.get(language, {}).get(key)
